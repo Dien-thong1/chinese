@@ -3,7 +3,7 @@
   "short_name": "Chinese",
   "start_url": "./",
   "scope": "./",
-  "display": "standalone",
+  "display": "fullscreen",
   "orientation": "portrait",
   "background_color": "#1d1c1a",
   "theme_color": "#1d1c1a",
