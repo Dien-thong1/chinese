@@ -1,6 +1,6 @@
 {
-  "name": "Học HSK1",
-  "short_name": "HSK1",
+  "name": "Chinese",
+  "short_name": "Chinese",
   "start_url": "./",
   "scope": "./",
   "display": "standalone",

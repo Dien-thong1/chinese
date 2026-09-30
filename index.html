@@ -15,9 +15,9 @@ if("serviceWorker" in navigator)
 
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<meta name="apple-mobile-web-app-title" content="Học HSK1">
+<meta name="apple-mobile-web-app-title" content="Học tiếng Trung">
 
-<title>Học HSK1</title>
+<title>Học tiếng Trung</title>
 <style>
 :root{color-scheme:light dark;--bg:light-dark(#f4f1ea,#1d1c1a);--pn:light-dark(#fffdf8,#282622);--ln:light-dark(#ded8c8,#3d3a33);--tx:light-dark(#2b2a26,#ece8dd);--mu:light-dark(#7a756a,#9a958a);--ac:light-dark(#c0392b,#e0685a);--ok:light-dark(#2e8b57,#4cb37d);--lr:light-dark(#2f6fb0,#5a9fe0);--sd:light-dark(#ebe6d8,#24221f)}
 :root[data-theme=light]{color-scheme:light}:root[data-theme=dark]{color-scheme:dark}
@@ -216,11 +216,11 @@ const closeAllOv=()=>{
 
 const toB64=s=>btoa(String.fromCharCode(...new TextEncoder().encode(s)));
 const fromB64=s=>new TextDecoder().decode(Uint8Array.from(atob(s),c=>c.charCodeAt(0)));
-try{known=new Set(JSON.parse(localStorage.hsk1known||"[]"))}catch{}
-try{learning=new Set(JSON.parse(localStorage.hsk1learning||"[]"))}catch{}
-try{dataPath=localStorage.hsk1datapath||"data.txt"}catch{}
-const save=()=>{try{localStorage.hsk1known=JSON.stringify([...known]);localStorage.hsk1learning=JSON.stringify([...learning])}catch{}};
-const savePath=()=>{try{localStorage.hsk1datapath=dataPath}catch{}};
+try{known=new Set(JSON.parse(localStorage.hskknown||"[]"))}catch{}
+try{learning=new Set(JSON.parse(localStorage.hsklearning||"[]"))}catch{}
+try{dataPath=localStorage.hskdatapath||"data.txt"}catch{}
+const save=()=>{try{localStorage.hskknown=JSON.stringify([...known]);localStorage.hsklearning=JSON.stringify([...learning])}catch{}};
+const savePath=()=>{try{localStorage.hskdatapath=dataPath}catch{}};
 const isNum=v=>/^\d+$/.test(v);
 function migrate(){
 const fix=s=>new Set([...s].map(v=>isNum(v)?W[v]?.[0]:v).filter(Boolean));
@@ -393,7 +393,7 @@ if(c===document.body?b.id!="fs":CLOSERS.includes(b.id))closeMenu(c);
 
 const fab=$("#fab"),vv=window.visualViewport,FS=58,FM=8;
 let fp={x:1,y:.7};
-try{const s=JSON.parse(localStorage.hsk1fab||"null");if(s&&typeof s.x=="number"&&typeof s.y=="number")fp={x:Math.min(1,Math.max(0,s.x)),y:Math.min(1,Math.max(0,s.y))}}catch{}
+try{const s=JSON.parse(localStorage.hskfab||"null");if(s&&typeof s.x=="number"&&typeof s.y=="number")fp={x:Math.min(1,Math.max(0,s.x)),y:Math.min(1,Math.max(0,s.y))}}catch{}
 const vm=()=>({w:vv?vv.width:innerWidth,h:vv?vv.height:innerHeight,ox:vv?vv.offsetLeft:0,oy:vv?vv.offsetTop:0});
 function placeFab(){const m=vm();fab.style.left=m.ox+FM+fp.x*Math.max(0,m.w-FS-2*FM)+"px";fab.style.top=m.oy+FM+fp.y*Math.max(0,m.h-FS-2*FM)+"px"}
 const mob=()=>matchMedia("(max-width:720px),(pointer:coarse)").matches;
@@ -427,7 +427,7 @@ placeFab();
 });
 const endDrag=()=>{
 if(!g)return;clearTimeout(g.tm);const moved=g.m;g=null;fab.classList.remove("drag");
-if(moved){fp.x=fp.x<.5?0:1;fab.classList.add("snap");placeFab();try{localStorage.hsk1fab=JSON.stringify(fp)}catch{}}
+if(moved){fp.x=fp.x<.5?0:1;fab.classList.add("snap");placeFab();try{localStorage.hskfab=JSON.stringify(fp)}catch{}}
 return moved;
 };
 fab.addEventListener("pointerup",()=>{const lp=g&&g.lp;if(endDrag()===false&&!lp)doCheck()});
