@@ -1,23 +1,22 @@
 {
-  "name": "Học HSK",
-  "short_name": "Learn Chinese",
+  "name": "Học HSK1",
+  "short_name": "HSK1",
   "start_url": "./",
-  "display": "fullscreen",
-  "orientation": "any",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
   "background_color": "#1d1c1a",
   "theme_color": "#1d1c1a",
   "icons": [
     {
       "src": "icon-192.png",
       "sizes": "192x192",
-      "type": "image/png",
-      "purpose": "any maskable"
+      "type": "image/png"
     },
     {
       "src": "icon-512.png",
       "sizes": "512x512",
-      "type": "image/png",
-      "purpose": "any maskable"
+      "type": "image/png"
     }
   ]
 }

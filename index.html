@@ -1,36 +1,23 @@
 <script>
-// Đăng ký Service Worker siêu nhẹ
-if ('serviceWorker' in navigator) {
-  window.addEventListener('load', () => {
-    const swCode = `
-      self.addEventListener('install', e => self.skipWaiting());
-      self.addEventListener('activate', e => e.waitUntil(clients.claim()));
-      self.addEventListener('fetch', e => e.respondWith(fetch(e.request)));
-    `;
-    const blob = new Blob([swCode], { type: 'application/javascript' });
-    const swUrl = URL.createObjectURL(blob);
-    navigator.serviceWorker.register(swUrl).catch(err => console.log('SW error:', err));
-  });
-}
+if("serviceWorker" in navigator)
+  addEventListener("load",()=>navigator.serviceWorker.register("./sw.js"));
 </script>
 
 <!DOCTYPE html>
-<html lang="vi"><head><meta charset="utf-8">
+<html lang="vi"><head>
 <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover, interactive-widget=resizes-content">
-  
-  <!-- Thẻ khai báo Manifest cho PWA Android -->
-  <link rel="manifest" href="manifest.json">
-  
-  <!-- Các thẻ meta màu sắc & chế độ ứng dụng trên Android Chrome -->
-  <meta name="mobile-web-app-capable" content="yes">
-  <meta name="theme-color" content="#1d1c1a">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover,interactive-widget=resizes-content">
 
-  <!-- Giữ nguyên các thẻ meta cũ của bạn -->
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-  <meta name="apple-mobile-web-app-title" content="Học HSK1">
-  <title>Học HSK1</title>
+<link rel="manifest" href="./manifest.json">
+
+<meta name="theme-color" content="#1d1c1a">
+<meta name="mobile-web-app-capable" content="yes">
+
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Học HSK1">
+
+<title>Học HSK1</title>
 <style>
 :root{color-scheme:light dark;--bg:light-dark(#f4f1ea,#1d1c1a);--pn:light-dark(#fffdf8,#282622);--ln:light-dark(#ded8c8,#3d3a33);--tx:light-dark(#2b2a26,#ece8dd);--mu:light-dark(#7a756a,#9a958a);--ac:light-dark(#c0392b,#e0685a);--ok:light-dark(#2e8b57,#4cb37d);--lr:light-dark(#2f6fb0,#5a9fe0);--sd:light-dark(#ebe6d8,#24221f)}
 :root[data-theme=light]{color-scheme:light}:root[data-theme=dark]{color-scheme:dark}
