@@ -76,6 +76,9 @@ main{flex:1;padding:14px;min-width:0;min-height:0;overflow-y:auto;overscroll-beh
 .win.show{display:flex}
 .win div{background:var(--pn);padding:28px;border-radius:12px;text-align:center;display:flex;flex-direction:column;gap:12px;min-width:260px}
 .win h2{margin:0}
+#stPop{position:fixed;z-index:50}
+#stPop div button{padding:14px;font-size:17px}
+#stPop .hz{font-size:30px}
 .tg{display:none;position:fixed;top:calc(8px + env(safe-area-inset-top,0px));right:calc(8px + env(safe-area-inset-right,0px));z-index:20;width:44px;height:44px;border-radius:50%;padding:0;font-size:20px;line-height:1;align-items:center;justify-content:center;box-shadow:0 2px 8px rgba(0,0,0,.25)}
 #fab{position:fixed;left:0;top:0;width:58px;height:58px;border-radius:50%;background:var(--ok);color:#fff;display:none;align-items:center;justify-content:center;font-size:26px;z-index:40;touch-action:none;user-select:none;-webkit-user-select:none;-webkit-touch-callout:none;box-shadow:0 4px 14px rgba(0,0,0,.35);opacity:.9;cursor:grab;-webkit-tap-highlight-color:transparent;transition:transform .15s,opacity .15s}
 #fab.drag{transform:scale(1.12);opacity:1;cursor:grabbing}
@@ -126,6 +129,8 @@ main{padding:12px}
 <input type="number" id="num" value="10" min="1" max="150">
 <b class="sec">Đọc tự động</b>
 <button id="autoBtn">▶ Đọc tự động</button>
+<small>Nghỉ giữa các từ (ms)</small>
+<input type="number" id="autoGap" value="800" min="0" max="10000" step="100">
 <b class="sec">Luyện tập Nối</b>
 <button class="pri" id="go">Nối từ</button>
 <b class="sec">Luyện Tập Ghi</b>
@@ -204,20 +209,26 @@ main{padding:12px}
 </div>
 </div>
 
+<div class="win" id="stPop"><div>
+<h2 id="stWord" class="hz"></h2>
+<button data-s="unk">😀 Chưa biết</button>
+<button data-s="lr">📖 Đang học</button>
+<button data-s="kn">💚 Đã biết</button>
+</div></div>
+
 <div id="fab" title="Chạm: kiểm tra · Giữ: cài đặt · Kéo: di chuyển">✔</div>
 
 <script>
 let W=[],W0=null,sortedABC=true,tab="all",rand=null,known=new Set(),learning=new Set(),mh={};
 let autoOn=false,autoTimer=null,autoIdx=0,curWordIdx=null,readToken=0;
-let rate=1,dataPath="data.txt";
-const AUTO_WAIT=800;
+let rate=1,dataPath="data.txt",autoGap=800;
 const $=s=>document.querySelector(s),$$=s=>document.querySelectorAll(s);
 const esc=s=>s.replace(/[&<>"]/g,c=>"&#"+c.charCodeAt(0)+";");
 const sh=a=>a.map(x=>[Math.random(),x]).sort((p,q)=>p[0]-q[0]).map(x=>x[1]);
 const show=(id,on=true)=>{const e=$(id);e.classList.toggle("show",on);if(!on)e.classList.remove("mo");else document.body.classList.remove("mo");updFab()};
 const shown=id=>$(id).classList.contains("show");
 const killSpeech=()=>{if(!window.speechSynthesis)return;try{speechSynthesis.pause()}catch{}try{speechSynthesis.cancel()}catch{}};
-const closeAllOv=()=>{killSpeech();stopAuto();["#ov","#ovGhi","#ovSet","#win","#winGhi"].forEach(id=>show(id,false));$("#ghiInp").blur()};
+const closeAllOv=()=>{killSpeech();stopAuto();["#ov","#ovGhi","#ovSet","#win","#winGhi","#stPop"].forEach(id=>show(id,false));$("#ghiInp").blur()};
 
 const toB64=s=>btoa(String.fromCharCode(...new TextEncoder().encode(s)));
 const fromB64=s=>new TextDecoder().decode(Uint8Array.from(atob(s),c=>c.charCodeAt(0)));
@@ -225,6 +236,7 @@ try{known=new Set(JSON.parse(localStorage.hskknown||"[]"))}catch{}
 try{learning=new Set(JSON.parse(localStorage.hsklearning||"[]"))}catch{}
 try{dataPath=localStorage.hskdatapath||"data.txt"}catch{}
 try{const r=parseFloat(localStorage.hskrate);if(isFinite(r)&&r>=0.1&&r<=3)rate=r}catch{}
+try{const g=parseInt(localStorage.hskgap);if(isFinite(g)&&g>=0)autoGap=Math.min(g,10000)}catch{}
 const save=()=>{try{localStorage.hskknown=JSON.stringify([...known]);localStorage.hsklearning=JSON.stringify([...learning])}catch{}};
 const savePath=()=>{try{localStorage.hskdatapath=dataPath}catch{}};
 const saveRate=()=>{try{localStorage.hskrate=rate}catch{}};
@@ -328,7 +340,7 @@ function autoStep(){
   readWord(i,()=>{
     if(!autoOn)return;
     autoIdx++;
-    autoTimer=setTimeout(autoStep,AUTO_WAIT);
+    autoTimer=setTimeout(autoStep,autoGap);
   });
 }
 $("#autoBtn").onclick=()=>{
@@ -337,19 +349,19 @@ $("#autoBtn").onclick=()=>{
   autoOn=true;autoIdx=0;updAutoBtn();
   autoStep();
 };
+$("#autoGap").value=autoGap;
+$("#autoGap").oninput=e=>{
+  const v=parseInt(e.target.value);
+  autoGap=isFinite(v)&&v>=0?Math.min(v,10000):800;
+  try{localStorage.hskgap=autoGap}catch{}
+};
 
 /* ===== Sự kiện ===== */
 $$(".hd [data-m]").forEach(b=>b.onclick=()=>{mh[b.dataset.m]=!mh[b.dataset.m];render()});
 $("#list").onclick=e=>{
   const row=e.target.closest(".row");if(!row)return;
   const i=+row.dataset.i,a=e.target.closest("[data-a]")?.dataset.a,h=W[i][0];
-  if(a=="st"){
-    /* chưa biết → đang học → đã biết → chưa biết */
-    if(known.has(h))known.delete(h);
-    else if(learning.has(h)){learning.delete(h);known.add(h)}
-    else learning.add(h);
-    save();render();return;
-  }
+  if(a=="st"){openSt(h);return}
   if(autoOn){
     const a2=cur(),pos=a2.indexOf(i);if(pos<0)return;
     autoIdx=pos;curWordIdx=i;scrollToWord(i);
@@ -359,6 +371,24 @@ $("#list").onclick=e=>{
   }
   if(a=="sp"||!$("#onlySp").checked)zh(i);
 };
+
+/* ===== Chọn trạng thái từ ===== */
+let stH=null;
+const stPop=$("#stPop");
+function openSt(h){
+  stH=h;$("#stWord").textContent=h;
+  const s=known.has(h)?"kn":learning.has(h)?"lr":"unk";
+  $$("#stPop [data-s]").forEach(b=>b.classList.toggle("on",b.dataset.s==s));
+  stPop.classList.add("show");
+}
+$$("#stPop [data-s]").forEach(b=>b.onclick=()=>{
+  const s=b.dataset.s;
+  known.delete(stH);learning.delete(stH);
+  if(s=="kn")known.add(stH);else if(s=="lr")learning.add(stH);
+  save();stPop.classList.remove("show");render();
+});
+stPop.onclick=e=>{if(e.target===stPop)stPop.classList.remove("show")};
+
 $$(".tab").forEach(b=>b.onclick=()=>{
   const was=autoOn;
   closeAllOv();
