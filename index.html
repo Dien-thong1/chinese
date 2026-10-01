@@ -7,16 +7,12 @@ if("serviceWorker" in navigator)
 <html lang="vi"><head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover,interactive-widget=resizes-content">
-
 <link rel="manifest" href="./manifest.json">
-
 <meta name="theme-color" content="#1d1c1a">
 <meta name="mobile-web-app-capable" content="yes">
-
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="Học tiếng Trung">
-
 <title>Học tiếng Trung</title>
 <style>
 :root{color-scheme:light dark;--bg:light-dark(#f4f1ea,#1d1c1a);--pn:light-dark(#fffdf8,#282622);--ln:light-dark(#ded8c8,#3d3a33);--tx:light-dark(#2b2a26,#ece8dd);--mu:light-dark(#7a756a,#9a958a);--ac:light-dark(#c0392b,#e0685a);--ok:light-dark(#2e8b57,#4cb37d);--lr:light-dark(#2f6fb0,#5a9fe0);--sd:light-dark(#ebe6d8,#24221f)}
@@ -41,6 +37,7 @@ main{flex:1;padding:14px;min-width:0;min-height:0;overflow-y:auto;overscroll-beh
 .hd button{padding:6px 2px;font-size:12px}
 .row{background:var(--pn);border:1px solid var(--ln);border-radius:10px;padding:8px 12px;margin-bottom:8px;cursor:pointer;touch-action:manipulation}
 .row:hover{border-color:var(--ac)}
+.row.rd{border-color:var(--ac);background:var(--sd)}
 .hz{font-size:30px;font-family:"Noto Sans SC","PingFang SC","Microsoft YaHei",sans-serif}
 .py{font-size:19px;color:var(--ac)}.en{font-size:19px;font-weight:500}
 .sp{width:38px;height:38px;border-radius:50%;padding:0;background:var(--sd)}
@@ -70,27 +67,24 @@ main{flex:1;padding:14px;min-width:0;min-height:0;overflow-y:auto;overscroll-beh
 .set-box input[type=text]{width:100%;border:1px solid var(--ln);border-radius:8px;background:var(--bg);color:var(--tx);padding:10px;font:inherit;outline:none}
 .set-box input[type=text]:focus{border-color:var(--ac)}
 .btn-group{display:flex;gap:8px;flex-wrap:wrap}.btn-group button{flex:1}
+.split{display:flex;gap:0}
+.split button{flex:1;min-width:0;padding:10px 4px;font-size:13px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.split button:first-child{border-radius:8px 0 0 8px;border-right:0}
+.split button:last-child{border-radius:0 8px 8px 0}
 @keyframes sk{50%{transform:translateX(6px)}}
 .win{position:absolute;inset:0;background:rgba(0,0,0,.6);display:none;align-items:center;justify-content:center;z-index:10}
 .win.show{display:flex}
 .win div{background:var(--pn);padding:28px;border-radius:12px;text-align:center;display:flex;flex-direction:column;gap:12px;min-width:260px}
 .win h2{margin:0}
-
-/* nút mở menu (chỉ mobile) */
 .tg{display:none;position:fixed;top:calc(8px + env(safe-area-inset-top,0px));right:calc(8px + env(safe-area-inset-right,0px));z-index:20;width:44px;height:44px;border-radius:50%;padding:0;font-size:20px;line-height:1;align-items:center;justify-content:center;box-shadow:0 2px 8px rgba(0,0,0,.25)}
-
-/* nút kiểm tra nổi, kéo được */
 #fab{position:fixed;left:0;top:0;width:58px;height:58px;border-radius:50%;background:var(--ok);color:#fff;display:none;align-items:center;justify-content:center;font-size:26px;z-index:40;touch-action:none;user-select:none;-webkit-user-select:none;-webkit-touch-callout:none;box-shadow:0 4px 14px rgba(0,0,0,.35);opacity:.9;cursor:grab;-webkit-tap-highlight-color:transparent;transition:transform .15s,opacity .15s}
 #fab.drag{transform:scale(1.12);opacity:1;cursor:grabbing}
 #fab.snap{transition:left .22s ease,top .22s ease,transform .15s}
-
 @media(max-width:720px){
 body{flex-direction:column}
 .tg{display:flex}
-/* menu trượt từ bên phải */
 body>aside{position:fixed;top:0;right:0;bottom:0;left:auto;height:auto;max-height:none;width:240px;max-width:82vw;z-index:30;transform:translateX(105%);transition:transform .22s ease;border-right:0;border-left:1px solid var(--ln);padding:calc(14px + env(safe-area-inset-top,0px)) calc(14px + env(safe-area-inset-right,0px)) calc(14px + env(safe-area-inset-bottom,0px)) 14px;overflow-y:auto}
 body.mo>aside{transform:none;box-shadow:-8px 0 24px rgba(0,0,0,.3)}
-/* popup cài đặt luyện tập: giữ nút ✔ nổi để mở */
 .ov aside{position:fixed;top:50%;left:50%;right:auto;bottom:auto;width:min(340px,92vw);max-width:none;height:auto;max-height:82vh;transform:translate(-50%,-46%) scale(.94);opacity:0;pointer-events:none;transition:transform .18s ease,opacity .18s ease;z-index:30;border:1px solid var(--ln);border-radius:16px;padding:14px;display:grid;grid-template-columns:1fr 1fr;gap:8px;overflow-y:auto;box-shadow:0 12px 40px rgba(0,0,0,.4)}
 .ov.mo>aside{transform:translate(-50%,-50%);opacity:1;pointer-events:auto}
 .ov aside>b,.ov aside>small,.ov aside>.pri{grid-column:1/-1}
@@ -111,6 +105,7 @@ main{padding:12px}
 .ghi-card{padding:14px;gap:6px}.ghi-card .hz{font-size:40px}.ghi-card .py{font-size:22px}.ghi-card .en{font-size:18px}
 .ghi-input{font-size:22px;padding:10px}
 #setBody{justify-content:flex-start;padding:14px}
+.split button{font-size:12px;padding:12px 4px}
 }
 </style></head><body>
 <button class="tg" aria-label="Menu">☰</button>
@@ -121,10 +116,16 @@ main{padding:12px}
 <button class="tab" data-t="unk">😀 Chưa biết</button>
 <button class="tab" data-t="lr">📖 Đang học</button>
 <button class="tab" data-t="kn">💚 Đã biết</button>
+<div class="split">
+<button id="shuffle">🔀 Trộn</button>
+<button id="sortabc">🔤 ABC</button>
+</div>
 <button id="rnd">🎲 random 10</button>
 <label><input type="checkbox" id="onlySp">Phát khi bấm loa</label>
 <b class="sec">Số từ mỗi lượt</b>
 <input type="number" id="num" value="10" min="1" max="150">
+<b class="sec">Đọc tự động</b>
+<button id="autoBtn">▶ Đọc tự động</button>
 <b class="sec">Luyện tập Nối</b>
 <button class="pri" id="go">Nối từ</button>
 <b class="sec">Luyện Tập Ghi</b>
@@ -182,17 +183,23 @@ main{padding:12px}
 <aside><button class="pri" id="closeSet">✖ Thoát</button></aside>
 <div id="setBody">
 <div class="set-box">
+<h3>🔊 Tốc độ đọc</h3>
+<p style="margin:0;font-size:14px;color:var(--mu)">Áp dụng cho mọi chức năng. Mặc định <b>1</b>. Ví dụ: <b>0.8</b> (chậm hơn), <b>1.2</b> (nhanh hơn). Phạm vi 0.1 – 3.</p>
+<input type="text" id="rateVal" placeholder="1" autocomplete="off" autocapitalize="off" spellcheck="false">
+<div class="btn-group"><button id="btnSaveRate" class="pri">💾 Lưu</button><button id="btnResetRate">↺ Mặc định (1)</button></div>
+</div>
+<div class="set-box">
 <h3>📁 Đường dẫn dữ liệu</h3>
-<p style="margin:0;font-size:14px;color:var(--mu)">Mặc định: <b>data.txt</b>. Đổi sang file khác (ví dụ <b>hsk1.txt</b>) rồi bấm "Lưu &amp; Tải lại". Đường dẫn sẽ được ghi nhớ cho các lần sau.</p>
-<input type="text" id="dataPath" placeholder="data.txt" autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false">
+<p style="margin:0;font-size:14px;color:var(--mu)">Mặc định: <b>data.txt</b>. Đổi sang file khác (ví dụ <b>hsk1.txt</b>) rồi bấm "Lưu &amp; Tải lại".</p>
+<input type="text" id="dataPath" placeholder="data.txt" autocomplete="off" autocapitalize="off" spellcheck="false">
 <div class="btn-group"><button id="btnSavePath" class="pri">💾 Lưu &amp; Tải lại</button><button id="btnResetPath">↺ Mặc định</button></div>
 </div>
 <div class="set-box">
 <h3>⚙️ Quản lý dữ liệu từ vựng</h3>
-<p style="margin:0;font-size:14px;color:var(--mu)">Mã Base64 lưu toàn bộ các Hán tự bạn đã đánh dấu "Đang học" và "Đã biết".</p>
+<p style="margin:0;font-size:14px;color:var(--mu)">Mã Base64 lưu toàn bộ các Hán tự đã đánh dấu "Đang học" và "Đã biết".</p>
 <textarea id="b64Data" placeholder="Dữ liệu Base64..."></textarea>
-<div class="btn-group"><button id="btnExport" class="pri">📤 Xuất dữ liệu</button><button id="btnCopy">📋 Copy</button></div>
-<div class="btn-group"><button id="btnPaste">📥 Dán (Paste)</button><button id="btnImport" class="pri">📥 Nhập dữ liệu</button></div>
+<div class="btn-group"><button id="btnExport" class="pri">📤 Xuất</button><button id="btnCopy">📋 Copy</button></div>
+<div class="btn-group"><button id="btnPaste">📥 Dán</button><button id="btnImport" class="pri">📥 Nhập</button></div>
 </div>
 </div>
 </div>
@@ -200,49 +207,61 @@ main{padding:12px}
 <div id="fab" title="Chạm: kiểm tra · Giữ: cài đặt · Kéo: di chuyển">✔</div>
 
 <script>
-let W=[],tab="all",rand=null,known=new Set(),learning=new Set(),mh={};
-let dataPath="data.txt";
+let W=[],W0=null,sortedABC=true,tab="all",rand=null,known=new Set(),learning=new Set(),mh={};
+let autoOn=false,autoTimer=null,autoIdx=0,curWordIdx=null,readToken=0;
+let rate=1,dataPath="data.txt";
+const AUTO_WAIT=800;
 const $=s=>document.querySelector(s),$$=s=>document.querySelectorAll(s);
 const esc=s=>s.replace(/[&<>"]/g,c=>"&#"+c.charCodeAt(0)+";");
 const sh=a=>a.map(x=>[Math.random(),x]).sort((p,q)=>p[0]-q[0]).map(x=>x[1]);
 const show=(id,on=true)=>{const e=$(id);e.classList.toggle("show",on);if(!on)e.classList.remove("mo");else document.body.classList.remove("mo");updFab()};
 const shown=id=>$(id).classList.contains("show");
-
-const closeAllOv=()=>{
-  speechSynthesis.cancel();
-  ["#ov","#ovGhi","#ovSet","#win","#winGhi"].forEach(id=>show(id,false));
-  $("#ghiInp").blur();
-};
+const killSpeech=()=>{if(!window.speechSynthesis)return;try{speechSynthesis.pause()}catch{}try{speechSynthesis.cancel()}catch{}};
+const closeAllOv=()=>{killSpeech();stopAuto();["#ov","#ovGhi","#ovSet","#win","#winGhi"].forEach(id=>show(id,false));$("#ghiInp").blur()};
 
 const toB64=s=>btoa(String.fromCharCode(...new TextEncoder().encode(s)));
 const fromB64=s=>new TextDecoder().decode(Uint8Array.from(atob(s),c=>c.charCodeAt(0)));
 try{known=new Set(JSON.parse(localStorage.hskknown||"[]"))}catch{}
 try{learning=new Set(JSON.parse(localStorage.hsklearning||"[]"))}catch{}
 try{dataPath=localStorage.hskdatapath||"data.txt"}catch{}
+try{const r=parseFloat(localStorage.hskrate);if(isFinite(r)&&r>=0.1&&r<=3)rate=r}catch{}
 const save=()=>{try{localStorage.hskknown=JSON.stringify([...known]);localStorage.hsklearning=JSON.stringify([...learning])}catch{}};
 const savePath=()=>{try{localStorage.hskdatapath=dataPath}catch{}};
+const saveRate=()=>{try{localStorage.hskrate=rate}catch{}};
 const isNum=v=>/^\d+$/.test(v);
+
 function migrate(){
-const fix=s=>new Set([...s].map(v=>isNum(v)?W[v]?.[0]:v).filter(Boolean));
-let ch=false;
-if([...known].some(isNum)){known=fix(known);ch=true}
-if([...learning].some(isNum)){learning=fix(learning);ch=true}
-if(ch)save();
+  const fix=s=>new Set([...s].map(v=>isNum(v)?W[v]?.[0]:v).filter(Boolean));
+  let ch=false;
+  if([...known].some(isNum)){known=fix(known);ch=true}
+  if([...learning].some(isNum)){learning=fix(learning);ch=true}
+  if(ch)save();
 }
 async function loadData(){
   const r=await fetch(dataPath);
   if(!r.ok)throw new Error("HTTP "+r.status);
   W=(await r.text()).split(/\r?\n/).map(l=>l.trim()).filter(Boolean).map(l=>l.split("|"));
-  migrate();
+  W0=W.slice();sortedABC=true;syncSortBtns();migrate();
+}
+function syncSortBtns(){
+  $("#shuffle").classList.toggle("on",!sortedABC);
+  $("#sortabc").classList.toggle("on",sortedABC);
 }
 function countExisting(){
-  const wset=new Set(W.map(w=>w[0]));
+  const ws=new Set(W.map(w=>w[0]));
   let kc=0,lc=0;
-  for(const h of known)if(wset.has(h))kc++;
-  for(const h of learning)if(wset.has(h))lc++;
+  for(const h of known)if(ws.has(h))kc++;
+  for(const h of learning)if(ws.has(h))lc++;
   return {kc,lc};
 }
-function say(t,l){if(!window.speechSynthesis)return;speechSynthesis.cancel();const u=new SpeechSynthesisUtterance(t),v=speechSynthesis.getVoices().find(v=>v.lang.replace("_","-")==l);u.lang=l;u.rate=1;if(v)u.voice=v;speechSynthesis.speak(u)}
+function say(t,l){
+  if(!window.speechSynthesis)return;
+  killSpeech();readToken++;
+  const u=new SpeechSynthesisUtterance(t);
+  const v=speechSynthesis.getVoices().find(v=>v.lang.replace("_","-")==l);
+  u.lang=l;u.rate=rate;if(v)u.voice=v;
+  speechSynthesis.speak(u);
+}
 const zh=i=>say(W[i][0],"zh-CN"),en=i=>say(W[i][2],"en-US");
 const isKnown=i=>known.has(W[i][0]);
 const isLearning=i=>learning.has(W[i][0]);
@@ -251,40 +270,110 @@ const cur=()=>rand?base().filter(i=>rand.includes(i)):base();
 const pick=()=>rand=sh(base()).slice(0,10);
 const fresh=(prev,n)=>{const p=cur();return sh(p.filter(i=>!prev.includes(i))).concat(sh(p.filter(i=>prev.includes(i)))).slice(0,n)};
 const numN=()=>Math.max(1,parseInt($("#num").value)||10);
+
 function render(){
-const ids=cur();
-const {kc,lc}=countExisting();
-$("#cnt").textContent=`${rand?"Ngẫu nhiên ":""}${ids.length} từ · 📖 đang học ${lc} · 💚 đã biết ${kc}/${W.length}`;
-$("#list").className=Object.keys(mh).filter(k=>mh[k]).map(k=>"h-"+k).join(" ");
-$$(".hd [data-m]").forEach(b=>b.classList.toggle("on",!!mh[b.dataset.m]));
-$("#list").innerHTML=ids.length?ids.map(i=>{const w=W[i],k=isKnown(i),lr=isLearning(i);return `<div class="row" data-i="${i}"><div class="hz">${esc(w[0])}</div><div class="py">${esc(w[1])}</div><div class="en">${esc(w[2])}</div><div class="spw"><button class="sp" data-a="sp">🔊</button></div><div class="lrw"><button class="lr ${lr?"on":""}" data-a="lr">Đang học</button></div><div class="knw"><button class="kn ${k?"on":""}" data-a="kn">${k?"✓ Đã biết":"Đã biết"}</button></div></div>`}).join(""):'<div class="empty">Chưa có từ nào ở mục này.</div>';
+  const ids=cur(),{kc,lc}=countExisting();
+  $("#cnt").textContent=`${rand?"Ngẫu nhiên ":""}${!sortedABC?"🔀 ":""}${ids.length} từ · 📖 ${lc} · 💚 ${kc}/${W.length}`;
+  $("#list").className=Object.keys(mh).filter(k=>mh[k]).map(k=>"h-"+k).join(" ");
+  $$(".hd [data-m]").forEach(b=>b.classList.toggle("on",!!mh[b.dataset.m]));
+  $("#list").innerHTML=ids.length?ids.map(i=>{const w=W[i],k=isKnown(i),lr=isLearning(i);return `<div class="row" data-i="${i}"><div class="hz">${esc(w[0])}</div><div class="py">${esc(w[1])}</div><div class="en">${esc(w[2])}</div><div class="spw"><button class="sp" data-a="sp">🔊</button></div><div class="lrw"><button class="lr ${lr?"on":""}" data-a="lr">Đang học</button></div><div class="knw"><button class="kn ${k?"on":""}" data-a="kn">${k?"✓ Đã biết":"Đã biết"}</button></div></div>`}).join(""):'<div class="empty">Chưa có từ nào ở mục này.</div>';
 }
+
+/* ===== Đọc tự động ===== */
+function updAutoBtn(){
+  const b=$("#autoBtn");
+  if(autoOn){b.classList.add("on");b.textContent="⏸ Dừng đọc"}
+  else{b.classList.remove("on");b.textContent="▶ Đọc tự động"}
+}
+function scrollToWord(i){
+  const sc=$("main");let target=null;
+  $$("#list .row").forEach(r=>{const on=+r.dataset.i===i;r.classList.toggle("rd",on);if(on)target=r});
+  if(target){
+    const sr=sc.getBoundingClientRect(),rr=target.getBoundingClientRect();
+    const delta=(rr.top+rr.height/2)-(sr.top+sr.height/2);
+    const max=sc.scrollHeight-sc.clientHeight;
+    sc.scrollTo({top:Math.max(0,Math.min(sc.scrollTop+delta,max)),behavior:"smooth"});
+  }
+}
+function stopAuto(){
+  autoOn=false;
+  readToken++;clearTimeout(autoTimer);autoTimer=null;
+  killSpeech();updAutoBtn();
+  $$("#list .row.rd").forEach(r=>r.classList.remove("rd"));
+  curWordIdx=null;
+}
+function readWord(i,onEnd){
+  const tok=++readToken;
+  clearTimeout(autoTimer);autoTimer=null;
+  if(!window.speechSynthesis){onEnd&&onEnd();return}
+  killSpeech();
+  const u=new SpeechSynthesisUtterance(W[i][0]);
+  const v=speechSynthesis.getVoices().find(x=>x.lang.replace("_","-")=="zh-CN");
+  u.lang="zh-CN";u.rate=rate;if(v)u.voice=v;
+  let fired=false;
+  const finish=()=>{if(fired)return;fired=true;clearTimeout(autoTimer);autoTimer=null;if(tok!==readToken)return;onEnd&&onEnd()};
+  u.onend=finish;u.onerror=finish;
+  autoTimer=setTimeout(finish,Math.max(6000,W[i][0].length*1500+2000));
+  speechSynthesis.speak(u);
+}
+function autoStep(){
+  if(!autoOn)return;
+  const a=cur();
+  if(!a.length){stopAuto();return}
+  if(autoIdx>=a.length)autoIdx=0;
+  const i=a[autoIdx];curWordIdx=i;scrollToWord(i);
+  readWord(i,()=>{
+    if(!autoOn)return;
+    autoIdx++;
+    autoTimer=setTimeout(autoStep,AUTO_WAIT);
+  });
+}
+$("#autoBtn").onclick=()=>{
+  if(autoOn){stopAuto();return}
+  document.body.classList.remove("mo");
+  autoOn=true;autoIdx=0;updAutoBtn();
+  autoStep();
+};
+
+/* ===== Sự kiện ===== */
 $$(".hd [data-m]").forEach(b=>b.onclick=()=>{mh[b.dataset.m]=!mh[b.dataset.m];render()});
-$("#list").onclick=e=>{const row=e.target.closest(".row");if(!row)return;const i=+row.dataset.i,a=e.target.closest("[data-a]")?.dataset.a,h=W[i][0];
-if(a=="kn"){known.has(h)?known.delete(h):(known.add(h),learning.delete(h));save();render()}
-else if(a=="lr"){learning.has(h)?learning.delete(h):(learning.add(h),known.delete(h));save();render()}
-else if(a=="sp"||!$("#onlySp").checked)zh(i)};
+$("#list").onclick=e=>{
+  const row=e.target.closest(".row");if(!row)return;
+  const i=+row.dataset.i,a=e.target.closest("[data-a]")?.dataset.a,h=W[i][0];
+  if(a=="kn"){known.has(h)?known.delete(h):(known.add(h),learning.delete(h));save();render();return}
+  if(a=="lr"){learning.has(h)?learning.delete(h):(learning.add(h),known.delete(h));save();render();return}
+  if(autoOn){
+    const a2=cur(),pos=a2.indexOf(i);if(pos<0)return;
+    autoIdx=pos;curWordIdx=i;scrollToWord(i);
+    readToken++;clearTimeout(autoTimer);autoTimer=null;killSpeech();
+    autoStep();
+    return;
+  }
+  if(a=="sp"||!$("#onlySp").checked)zh(i);
+};
 $$(".tab").forEach(b=>b.onclick=()=>{closeAllOv();tab=b.dataset.t;$$(".tab").forEach(x=>x.classList.toggle("on",x==b));rand&&pick();render()});
+$("#shuffle").onclick=()=>{closeAllOv();W=sh(W0.slice());sortedABC=false;syncSortBtns();rand=null;$("#rnd").classList.remove("on");render()};
+$("#sortabc").onclick=()=>{closeAllOv();W=W0.slice();sortedABC=true;syncSortBtns();rand=null;$("#rnd").classList.remove("on");render()};
 $("#rnd").onclick=e=>{closeAllOv();rand?rand=null:pick();e.target.classList.toggle("on",!!rand);render()};
 
+/* ===== Nối từ ===== */
 const COLS=["hz","py","en","sp"],IX={hz:0,py:1,en:2};
 const T=(i,c)=>W[i][IX[c]|0];
 let ids=[],ord={},sel={},done=new Set,hide={},all=false;
 const vis=()=>COLS.filter(c=>!hide[c]);
 function start(){ord={};COLS.forEach(c=>ord[c]=sh(ids));sel={};done=new Set;show("#win",false);draw()}
 function draw(){
-const v=vis();
-$$("#ov [data-h]").forEach(b=>b.classList.toggle("on",!!hide[b.dataset.h]));
-$("#allSnd").classList.toggle("on",all);
-$("#pbody").style.setProperty("--g",v.map(c=>c=="sp"?"60px":"1fr").join(" "));
-$("#pbody").innerHTML=ids.length?ids.map((_,r)=>v.map(c=>{const i=ord[c][r];return `<div class="cell ${sel[c]===i?"sel":""} ${done.has(c+i)?"done":""}" data-c="${c}" data-i="${i}">${c=="sp"?"🔊":esc(T(i,c))}</div>`}).join("")).join(""):'<div class="empty">Không có từ để luyện.</div>';
+  const v=vis();
+  $$("#ov [data-h]").forEach(b=>b.classList.toggle("on",!!hide[b.dataset.h]));
+  $("#allSnd").classList.toggle("on",all);
+  $("#pbody").style.setProperty("--g",v.map(c=>c=="sp"?"60px":"1fr").join(" "));
+  $("#pbody").innerHTML=ids.length?ids.map((_,r)=>v.map(c=>{const i=ord[c][r];return `<div class="cell ${sel[c]===i?"sel":""} ${done.has(c+i)?"done":""}" data-c="${c}" data-i="${i}">${c=="sp"?"🔊":esc(T(i,c))}</div>`}).join("")).join(""):'<div class="empty">Không có từ để luyện.</div>';
 }
 function check(){
-if(!shown("#ov")||shown("#win"))return;
-const v=vis();
-if(v.some(c=>sel[c]==null))return;
-if(ids.some(w=>v.every(c=>T(sel[c],c)==T(w,c)))){v.forEach(c=>done.add(c+sel[c]));sel={};draw();if(ids.every(i=>v.every(c=>done.has(c+i))))show("#win")}
-else{$$("#pbody .sel").forEach(c=>c.classList.add("bad"));navigator.vibrate?.(30);setTimeout(()=>{sel={};draw()},350)}
+  if(!shown("#ov")||shown("#win"))return;
+  const v=vis();if(v.some(c=>sel[c]==null))return;
+  if(ids.some(w=>v.every(c=>T(sel[c],c)==T(w,c)))){v.forEach(c=>done.add(c+sel[c]));sel={};draw();if(ids.every(i=>v.every(c=>done.has(c+i))))show("#win")}
+  else{$$("#pbody .sel").forEach(c=>c.classList.add("bad"));navigator.vibrate?.(30);setTimeout(()=>{sel={};draw()},350)}
 }
 $("#go").onclick=()=>{closeAllOv();ids=sh(cur()).slice(0,numN());hide={};all=false;start();show("#ov")};
 $$("#ov [data-h]").forEach(b=>b.onclick=()=>{const c=b.dataset.h;if(hide[c])hide[c]=0;else if(vis().length>2)hide[c]=1;sel[c]=null;draw()});
@@ -293,33 +382,27 @@ $("#chk").onclick=check;
 $("#again").onclick=start;
 $("#newGame").onclick=$("#newSide").onclick=()=>{ids=fresh(ids,ids.length);start()};
 $("#pbody").onclick=e=>{const c=e.target.closest(".cell");if(!c)return;const k=c.dataset.c,i=+c.dataset.i;if(k=="sp"||all)k=="en"?en(i):zh(i);sel[k]=sel[k]===i?null:i;draw()};
-$("#close").onclick=$("#quit").onclick=()=>{speechSynthesis.cancel();show("#ov",false);show("#win",false)};
+$("#close").onclick=$("#quit").onclick=()=>{killSpeech();show("#ov",false);show("#win",false)};
 
+/* ===== Ghi từ ===== */
 let ghiIds=[],ghiIdx=0,hideGhi={},rndGhi=false,autoGhi=false,gw=null;
 const fo=()=>{if(!$("#ovGhi").classList.contains("mo"))$("#ghiInp").focus()};
-function startGhi(){
-ghiIds=sh(cur()).slice(0,numN());ghiIdx=0;show("#winGhi",false);
-if(!ghiIds.length)return alert("Không có từ nào trong danh sách hiển thị!");
-drawGhi();show("#ovGhi");$("#ghiInp").focus();setTimeout(fo,150);
-}
+function startGhi(){ghiIds=sh(cur()).slice(0,numN());ghiIdx=0;show("#winGhi",false);if(!ghiIds.length)return alert("Không có từ nào trong danh sách hiển thị!");drawGhi();show("#ovGhi");$("#ghiInp").focus();setTimeout(fo,150)}
 function newGhi(){ghiIds=fresh(ghiIds,ghiIds.length);ghiIdx=0;show("#winGhi",false);drawGhi();fo()}
 function drawGhi(keep){
-$$("#ovGhi [data-gh]").forEach(b=>b.classList.toggle("on",!!hideGhi[b.dataset.gh]));
-$("#rndGhi").classList.toggle("on",rndGhi);
-$("#autoGhi").classList.toggle("on",autoGhi);
-if(!keep)gw=rndGhi?ghiIds[Math.floor(Math.random()*ghiIds.length)]:ghiIds[ghiIdx];
-$("#ghiProg").textContent=rndGhi?"Chế độ: Ngẫu nhiên vô tận":`Từ ${ghiIdx+1} / ${ghiIds.length}`;
-[["hz",0],["py",1],["en",2]].forEach(([k,j])=>{const el=$("#ghi"+k[0].toUpperCase()+k[1]);el.textContent=W[gw][j];el.style.display=hideGhi[k]?"none":"block"});
-$("#ghiInp").value="";$("#ghiInp").classList.remove("bad");
-if(!keep&&autoGhi)zh(gw);
+  $$("#ovGhi [data-gh]").forEach(b=>b.classList.toggle("on",!!hideGhi[b.dataset.gh]));
+  $("#rndGhi").classList.toggle("on",rndGhi);
+  $("#autoGhi").classList.toggle("on",autoGhi);
+  if(!keep)gw=rndGhi?ghiIds[Math.floor(Math.random()*ghiIds.length)]:ghiIds[ghiIdx];
+  $("#ghiProg").textContent=rndGhi?"Chế độ: Ngẫu nhiên vô tận":`Từ ${ghiIdx+1} / ${ghiIds.length}`;
+  [["hz",0],["py",1],["en",2]].forEach(([k,j])=>{const el=$("#ghi"+k[0].toUpperCase()+k[1]);el.textContent=W[gw][j];el.style.display=hideGhi[k]?"none":"block"});
+  $("#ghiInp").value="";$("#ghiInp").classList.remove("bad");
+  if(!keep&&autoGhi)zh(gw);
 }
 function checkGhi(){
-if(!shown("#ovGhi")||shown("#winGhi"))return;
-if($("#ghiInp").value.trim()===W[gw][0]){
-if(rndGhi)drawGhi();
-else if(++ghiIdx>=ghiIds.length)show("#winGhi");
-else drawGhi();
-}else{$("#ghiInp").classList.add("bad");navigator.vibrate?.(30);setTimeout(()=>$("#ghiInp").classList.remove("bad"),350)}
+  if(!shown("#ovGhi")||shown("#winGhi"))return;
+  if($("#ghiInp").value.trim()===W[gw][0]){if(rndGhi)drawGhi();else if(++ghiIdx>=ghiIds.length)show("#winGhi");else drawGhi()}
+  else{$("#ghiInp").classList.add("bad");navigator.vibrate?.(30);setTimeout(()=>$("#ghiInp").classList.remove("bad"),350)}
 }
 const autoChk=()=>{if(gw!=null&&shown("#ovGhi")&&!shown("#winGhi")&&$("#ghiInp").value.trim()===W[gw][0])checkGhi()};
 $("#ghiInp").addEventListener("input",e=>{if(!e.isComposing)autoChk()});
@@ -333,43 +416,37 @@ $("#autoGhi").onclick=()=>{autoGhi=!autoGhi;drawGhi(true);if(autoGhi)zh(gw);fo()
 $("#chkGhi").onclick=checkGhi;
 $("#againGhi").onclick=startGhi;
 $("#ghiCard").onclick=()=>{gw!=null&&zh(gw);fo()};
-$("#closeGhi").onclick=$("#quitGhi").onclick=()=>{speechSynthesis.cancel();$("#ghiInp").blur();show("#ovGhi",false);show("#winGhi",false)};
+$("#closeGhi").onclick=$("#quitGhi").onclick=()=>{killSpeech();$("#ghiInp").blur();show("#ovGhi",false);show("#winGhi",false)};
 
-$("#goSet").onclick=()=>{closeAllOv();$("#b64Data").value="";$("#dataPath").value=dataPath;show("#ovSet")};
+/* ===== Cài đặt ===== */
+$("#goSet").onclick=()=>{closeAllOv();$("#b64Data").value="";$("#dataPath").value=dataPath;$("#rateVal").value=rate;show("#ovSet")};
 $("#closeSet").onclick=()=>show("#ovSet",false);
+$("#btnSaveRate").onclick=()=>{const v=parseFloat($("#rateVal").value);if(!isFinite(v)||v<0.1||v>3){alert("Giá trị không hợp lệ (0.1 – 3).");return}rate=v;saveRate();alert("✅ Đã lưu tốc độ đọc: "+rate)};
+$("#btnResetRate").onclick=()=>{$("#rateVal").value=1};
 $("#btnSavePath").onclick=async()=>{
-  const p=$("#dataPath").value.trim()||"data.txt";
-  dataPath=p;savePath();
-  try{
-    await loadData();
-    rand=null;
-    ids=[];ghiIds=[];sel={};done=new Set;ord={};gw=null;
-    render();
-    alert("✅ Đã tải dữ liệu từ: "+dataPath+" ("+W.length+" từ)");
-    show("#ovSet",false);
-  }catch(err){
-    alert("❌ Không tải được "+dataPath+": "+err.message);
-  }
+  const p=$("#dataPath").value.trim()||"data.txt";dataPath=p;savePath();
+  try{await loadData();rand=null;ids=[];ghiIds=[];sel={};done=new Set;ord={};gw=null;render();alert("✅ Đã tải dữ liệu từ: "+dataPath+" ("+W.length+" từ)");show("#ovSet",false)}
+  catch(err){alert("❌ Không tải được "+dataPath+": "+err.message)}
 };
 $("#btnResetPath").onclick=()=>{$("#dataPath").value="data.txt"};
 $("#btnExport").onclick=()=>$("#b64Data").value=toB64(JSON.stringify({k:[...known],l:[...learning]}));
-$("#btnCopy").onclick=()=>{const t=$("#b64Data").value.trim();if(!t)return alert("Không có dữ liệu để copy!");navigator.clipboard.writeText(t).then(()=>alert("Đã copy dữ liệu Base64!"),()=>alert("Lỗi khi copy!"))};
+$("#btnCopy").onclick=()=>{const t=$("#b64Data").value.trim();if(!t)return alert("Không có dữ liệu để copy!");navigator.clipboard.writeText(t).then(()=>alert("Đã copy!"),()=>alert("Lỗi khi copy!"))};
 $("#btnPaste").onclick=async()=>{try{$("#b64Data").value=await navigator.clipboard.readText()}catch{alert("Không thể truy cập Clipboard, vui lòng dán thủ công!")}};
 $("#btnImport").onclick=()=>{
-const b=$("#b64Data").value.trim();
-if(!b)return alert("Vui lòng nhập chuỗi Base64!");
-try{
-const d=JSON.parse(fromB64(b));
-if(Array.isArray(d)){known=new Set(d)}
-else if(d&&typeof d=="object"){known=new Set(d.k||[]);learning=new Set(d.l||[])}
-else throw 0;
-save();render();
-const {kc,lc}=countExisting();
-alert(`Nhập thành công: 📖 ${lc} đang học · ✓ ${kc} đã biết (trong data hiện tại)!`);
-show("#ovSet",false)
-}catch{alert("Giải mã dữ liệu thất bại! Chuỗi Base64 không hợp lệ.")}
+  const b=$("#b64Data").value.trim();if(!b)return alert("Vui lòng nhập chuỗi Base64!");
+  try{
+    const d=JSON.parse(fromB64(b));
+    if(Array.isArray(d))known=new Set(d);
+    else if(d&&typeof d=="object"){known=new Set(d.k||[]);learning=new Set(d.l||[])}
+    else throw 0;
+    save();render();
+    const {kc,lc}=countExisting();
+    alert(`Nhập thành công: 📖 ${lc} đang học · ✓ ${kc} đã biết!`);
+    show("#ovSet",false);
+  }catch{alert("Giải mã dữ liệu thất bại!")}
 };
 
+/* ===== Phím tắt & context menu ===== */
 const coarse=()=>matchMedia("(pointer:coarse)").matches;
 $("#ov").oncontextmenu=e=>{e.preventDefault();coarse()||check()};
 $("#ovGhi").oncontextmenu=e=>{e.preventDefault();coarse()||checkGhi()};
@@ -377,36 +454,26 @@ addEventListener("keydown",e=>{if(e.key=="Control"&&!e.repeat&&shown("#ovGhi")&&
 addEventListener("keydown",e=>{if(e.code!="Space")return;const f=shown("#ov")?check:shown("#ovGhi")?checkGhi:null;if(f){e.preventDefault();e.repeat||f()}});
 addEventListener("keyup",e=>{if(e.code=="Space"&&(shown("#ov")||shown("#ovGhi")))e.preventDefault()});
 
+/* ===== Menu mobile ===== */
 const closeMenu=c=>{c.classList.remove("mo");if(c.id=="ovGhi")fo()};
-$$(".tg").forEach(b=>b.onclick=()=>{
-const c=b.closest(".ov")||document.body;
-const o=c.classList.toggle("mo");
-if(c.id=="ovGhi")o?$("#ghiInp").blur():$("#ghiInp").focus();
-});
+$$(".tg").forEach(b=>b.onclick=()=>{const c=b.closest(".ov")||document.body;const o=c.classList.toggle("mo");if(c.id=="ovGhi")o?$("#ghiInp").blur():$("#ghiInp").focus()});
 document.addEventListener("click",e=>{const t=e.target;if(t===document.body||t.classList?.contains("ov"))closeMenu(t)});
 const CLOSERS=["chk","newSide","chkGhi","newGhiSide","close","closeGhi"];
 $$("aside").forEach(a=>a.addEventListener("click",e=>{
-const b=e.target.closest("button");if(!b)return;
-const c=a.parentElement;
-if(c===document.body?b.id!="fs":CLOSERS.includes(b.id))closeMenu(c);
+  const b=e.target.closest("button");if(!b)return;
+  const c=a.parentElement;
+  if(c===document.body?b.id!="fs":CLOSERS.includes(b.id))closeMenu(c);
 }));
 
+/* ===== FAB ===== */
 const fab=$("#fab"),vv=window.visualViewport,FS=58,FM=8;
 let fp={x:1,y:.7};
 try{const s=JSON.parse(localStorage.hskfab||"null");if(s&&typeof s.x=="number"&&typeof s.y=="number")fp={x:Math.min(1,Math.max(0,s.x)),y:Math.min(1,Math.max(0,s.y))}}catch{}
 const vm=()=>({w:vv?vv.width:innerWidth,h:vv?vv.height:innerHeight,ox:vv?vv.offsetLeft:0,oy:vv?vv.offsetTop:0});
 function placeFab(){const m=vm();fab.style.left=m.ox+FM+fp.x*Math.max(0,m.w-FS-2*FM)+"px";fab.style.top=m.oy+FM+fp.y*Math.max(0,m.h-FS-2*FM)+"px"}
 const mob=()=>matchMedia("(max-width:720px),(pointer:coarse)").matches;
-function fit(){
-const o=$("#ovGhi");
-if(vv&&mob()&&shown("#ovGhi")){o.style.bottom="auto";o.style.top=vv.offsetTop+"px";o.style.height=vv.height+"px"}
-else{o.style.bottom=o.style.top=o.style.height=""}
-}
-function updFab(){
-const on=mob()&&((shown("#ov")&&!shown("#win"))||(shown("#ovGhi")&&!shown("#winGhi")));
-fab.style.display=on?"flex":"none";
-fit();if(on)placeFab();
-}
+function fit(){const o=$("#ovGhi");if(vv&&mob()&&shown("#ovGhi")){o.style.bottom="auto";o.style.top=vv.offsetTop+"px";o.style.height=vv.height+"px"}else{o.style.bottom=o.style.top=o.style.height=""}}
+function updFab(){const on=mob()&&((shown("#ov")&&!shown("#win"))||(shown("#ovGhi")&&!shown("#winGhi")));fab.style.display=on?"flex":"none";fit();if(on)placeFab()}
 const actOv=()=>shown("#ov")?$("#ov"):$("#ovGhi");
 const openPop=()=>{const c=actOv();navigator.vibrate?.(20);if(c.classList.toggle("mo")&&c.id=="ovGhi")$("#ghiInp").blur()};
 const doCheck=()=>{const c=actOv();if(c.classList.contains("mo"))return closeMenu(c);if(shown("#ov"))check();else if(shown("#ovGhi")){checkGhi();fo()}};
@@ -416,34 +483,31 @@ fab.addEventListener("mousedown",e=>e.preventDefault());
 fab.addEventListener("contextmenu",e=>e.preventDefault());
 fab.addEventListener("pointerdown",e=>{g={id:e.pointerId,sx:e.clientX,sy:e.clientY,l:parseFloat(fab.style.left)||0,t:parseFloat(fab.style.top)||0,m:false,lp:false};g.tm=setTimeout(()=>{if(g&&!g.m){g.lp=true;openPop()}},450);fab.setPointerCapture(e.pointerId);fab.classList.remove("snap")});
 fab.addEventListener("pointermove",e=>{
-if(!g||e.pointerId!==g.id)return;
-const dx=e.clientX-g.sx,dy=e.clientY-g.sy;
-if(!g.m&&Math.hypot(dx,dy)<8)return;
-g.m=true;fab.classList.add("drag");
-const m=vm(),rx=Math.max(1,m.w-FS-2*FM),ry=Math.max(1,m.h-FS-2*FM);
-fp.x=Math.min(1,Math.max(0,(g.l+dx-m.ox-FM)/rx));
-fp.y=Math.min(1,Math.max(0,(g.t+dy-m.oy-FM)/ry));
-placeFab();
+  if(!g||e.pointerId!==g.id)return;
+  const dx=e.clientX-g.sx,dy=e.clientY-g.sy;
+  if(!g.m&&Math.hypot(dx,dy)<8)return;
+  g.m=true;fab.classList.add("drag");
+  const m=vm(),rx=Math.max(1,m.w-FS-2*FM),ry=Math.max(1,m.h-FS-2*FM);
+  fp.x=Math.min(1,Math.max(0,(g.l+dx-m.ox-FM)/rx));
+  fp.y=Math.min(1,Math.max(0,(g.t+dy-m.oy-FM)/ry));
+  placeFab();
 });
-const endDrag=()=>{
-if(!g)return;clearTimeout(g.tm);const moved=g.m;g=null;fab.classList.remove("drag");
-if(moved){fp.x=fp.x<.5?0:1;fab.classList.add("snap");placeFab();try{localStorage.hskfab=JSON.stringify(fp)}catch{}}
-return moved;
-};
+const endDrag=()=>{if(!g)return;clearTimeout(g.tm);const moved=g.m;g=null;fab.classList.remove("drag");if(moved){fp.x=fp.x<.5?0:1;fab.classList.add("snap");placeFab();try{localStorage.hskfab=JSON.stringify(fp)}catch{}}return moved};
 fab.addEventListener("pointerup",()=>{const lp=g&&g.lp;if(endDrag()===false&&!lp)doCheck()});
 fab.addEventListener("pointercancel",endDrag);
 if(vv){vv.addEventListener("resize",updFab);vv.addEventListener("scroll",updFab)}
 addEventListener("resize",updFab);
 addEventListener("orientationchange",()=>setTimeout(updFab,200));
 
+/* ===== Fullscreen ===== */
 const de=document.documentElement,isFs=()=>!!(document.fullscreenElement||document.webkitFullscreenElement);
 const updFs=()=>$("#fs").textContent=isFs()?"🗗 Close":"⛶ Full";
 $("#fs").onclick=()=>isFs()?(document.exitFullscreen||document.webkitExitFullscreen).call(document):(de.requestFullscreen||de.webkitRequestFullscreen)?.call(de);
 ["fullscreenchange","webkitfullscreenchange"].forEach(ev=>document.addEventListener(ev,updFs));
 
-loadData().then(render).catch(err=>{
-$("#cnt").textContent="";
-$("#list").innerHTML='<div class="empty">Không tải được '+esc(dataPath)+' ('+esc(String(err.message))+'). Hãy chạy bằng web server, không mở trực tiếp file. Vào ⚙️ Cài đặt để đổi đường dẫn data.</div>';
+loadData().then(()=>{updAutoBtn();render()}).catch(err=>{
+  $("#cnt").textContent="";
+  $("#list").innerHTML='<div class="empty">Không tải được '+esc(dataPath)+' ('+esc(String(err.message))+'). Hãy chạy bằng web server, không mở trực tiếp file. Vào ⚙️ Cài đặt để đổi đường dẫn data.</div>';
 });
 </script>
 </body></html>
