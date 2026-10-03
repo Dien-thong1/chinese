@@ -556,4 +556,92 @@ loadData().then(()=>{updAutoBtn();render()}).catch(err=>{
   $("#list").innerHTML='<div class="empty">Không tải được '+esc(dataPath)+' ('+esc(String(err.message))+'). Hãy chạy bằng web server, không mở trực tiếp file. Vào ⚙️ Cài đặt để đổi đường dẫn data.</div>';
 });
 </script>
+<script>
+/* ===== Kéo trái/phải trong tab Nối từ (chỉ kích hoạt khi buông tay) ===== */
+(function(){
+  const ov = document.getElementById("ov");
+  const pbody = document.getElementById("pbody");
+  let startX = null, startY = null, tracking = false;
+  const THRESHOLD = 120;   // ngưỡng kéo ngang
+
+  function isActive(){
+    return ov.classList.contains("show") && !document.getElementById("win").classList.contains("show");
+  }
+
+  function openSettingsMenu(){
+    if(!isActive()) return;
+    ov.classList.toggle("mo");
+    navigator.vibrate?.(20);
+  }
+
+  function doCheckNow(){
+    if(!isActive()) return;
+    if(typeof check === "function") check();
+  }
+
+  function onStart(e){
+    if(!isActive()) return;
+    if(e.target.closest("#fab") || e.target.closest("aside")) return;
+    if(ov.classList.contains("mo")) return;
+    const t = e.touches ? e.touches[0] : e;
+    startX = t.clientX;
+    startY = t.clientY;
+    tracking = true;
+  }
+
+  function onEnd(e){
+    if(!tracking || startX == null){ tracking = false; return; }
+    tracking = false;
+
+    // Lấy vị trí cuối
+    let endX, endY;
+    if(e.changedTouches && e.changedTouches[0]){
+      endX = e.changedTouches[0].clientX;
+      endY = e.changedTouches[0].clientY;
+    } else {
+      endX = e.clientX;
+      endY = e.clientY;
+    }
+
+    const dx = endX - startX;
+    const dy = endY - startY;
+    startX = null;
+    startY = null;
+
+    // Nếu lệch dọc > lệch ngang -> hủy (đang cuộn dọc)
+    if(Math.abs(dy) > Math.abs(dx)) return;
+
+    if(dx <= -THRESHOLD){
+      // Kéo sang trái 120px -> mở settings
+      openSettingsMenu();
+    } else if(dx >= THRESHOLD){
+      // Kéo sang phải 120px -> check đáp án
+      doCheckNow();
+    }
+  }
+
+  // Touch events (mobile)
+  pbody.addEventListener("touchstart", onStart, {passive:true});
+  pbody.addEventListener("touchend", onEnd);
+  pbody.addEventListener("touchcancel", ()=>{ tracking = false; startX = null; startY = null; });
+
+  // Pointer events (desktop) - bỏ qua touch để tránh double
+  let pointerActive = false;
+  pbody.addEventListener("pointerdown", e=>{
+    if(e.pointerType === "touch") return;
+    pointerActive = true;
+    onStart(e);
+  });
+  pbody.addEventListener("pointerup", e=>{
+    if(e.pointerType === "touch" || !pointerActive) return;
+    pointerActive = false;
+    onEnd(e);
+  });
+  pbody.addEventListener("pointercancel", e=>{
+    if(e.pointerType === "touch") return;
+    pointerActive = false;
+    tracking = false; startX = null; startY = null;
+  });
+})();
+</script>
 </body></html>
