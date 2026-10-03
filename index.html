@@ -156,7 +156,7 @@ main{padding:12px}
 <button id="allSnd">🔊 Bấm ô nào cũng phát</button>
 <button id="chk">✔ Kiểm tra</button>
 <button id="newSide">🆕 Chơi mới</button>
-<small>Mỗi cột chọn 1 ô rồi bấm <b>Space</b>, <b>chuột phải</b> hoặc chạm nút ✔ nổi (mobile) để kiểm tra. Nhấn giữ nút ✔ để mở bảng này.</small>
+<small>Mỗi cột chọn 1 ô rồi bấm <b>Space</b>, <b>chuột phải</b> hoặc chạm nút ✔ nổi (mobile) để kiểm tra. Nhấn giữ nút ✔ để mở bảng này. Kéo trái 120px để mở bảng này, kéo phải 120px để kiểm tra.</small>
 </aside>
 <div id="pbody"></div>
 <div class="win" id="win"><div><h2>🎉 Chiến thắng!</h2><button class="pri" id="newGame">🆕 Chơi mới</button><button id="again">Chơi lại</button><button id="quit">Thoát</button></div></div>
@@ -174,7 +174,7 @@ main{padding:12px}
 <button id="autoGhi">🔊 Tự động phát</button>
 <button id="chkGhi">✔ Kiểm tra</button>
 <button id="newGhiSide">🆕 Chơi mới</button>
-<small>Bấm <b>Space</b>, <b>Enter</b>, <b>chuột phải</b> hoặc chạm nút ✔ nổi để kiểm tra (nhấn giữ nút ✔ để mở bảng này). Bấm <b>Ctrl</b> hoặc chạm thẻ để nghe lại. Gõ đúng sẽ tự chuyển từ.</small>
+<small>Bấm <b>Space</b>, <b>Enter</b>, <b>chuột phải</b> hoặc chạm nút ✔ nổi để kiểm tra (nhấn giữ nút ✔ để mở bảng này). Bấm <b>Ctrl</b> hoặc chạm <b>nửa phải thẻ</b> để nghe lại. Bấm <b>nửa trái thẻ</b> để hiện tạm thời tất cả. Gõ đúng sẽ tự chuyển từ.</small>
 </aside>
 <div id="ghiBody">
 <div class="ghi-progress" id="ghiProg"></div>
@@ -432,19 +432,38 @@ $("#close").onclick=$("#quit").onclick=()=>{killSpeech();show("#ov",false);show(
 
 /* ===== Ghi từ ===== */
 let ghiIds=[],ghiIdx=0,hideGhi={},rndGhi=false,autoGhi=false,gw=null;
+let peekGhi=false;
 const fo=()=>{if(!$("#ovGhi").classList.contains("mo"))$("#ghiInp").focus()};
-function startGhi(){ghiIds=sh(cur()).slice(0,numN());ghiIdx=0;show("#winGhi",false);if(!ghiIds.length)return alert("Không có từ nào trong danh sách hiển thị!");drawGhi();show("#ovGhi");$("#ghiInp").focus();setTimeout(fo,150)}
-function newGhi(){ghiIds=fresh(ghiIds,ghiIds.length);ghiIdx=0;show("#winGhi",false);drawGhi();fo()}
+
+function applyGhiVisibility(){
+  [["hz",0],["py",1],["en",2]].forEach(([k,j])=>{
+    const el=document.getElementById("ghi"+k[0].toUpperCase()+k[1]);
+    if(!el)return;
+    const hidden=peekGhi?false:!!hideGhi[k];
+    el.style.display=hidden?"none":"block";
+  });
+}
 function drawGhi(keep){
   $$("#ovGhi [data-gh]").forEach(b=>b.classList.toggle("on",!!hideGhi[b.dataset.gh]));
   $("#rndGhi").classList.toggle("on",rndGhi);
   $("#autoGhi").classList.toggle("on",autoGhi);
   if(!keep)gw=rndGhi?ghiIds[Math.floor(Math.random()*ghiIds.length)]:ghiIds[ghiIdx];
   $("#ghiProg").textContent=rndGhi?"Chế độ: Ngẫu nhiên vô tận":`Từ ${ghiIdx+1} / ${ghiIds.length}`;
-  [["hz",0],["py",1],["en",2]].forEach(([k,j])=>{const el=$("#ghi"+k[0].toUpperCase()+k[1]);el.textContent=W[gw][j];el.style.display=hideGhi[k]?"none":"block"});
+  [["hz",0],["py",1],["en",2]].forEach(([k,j])=>{
+    const el=document.getElementById("ghi"+k[0].toUpperCase()+k[1]);
+    el.textContent=W[gw][j];
+  });
+  applyGhiVisibility();
   $("#ghiInp").value="";$("#ghiInp").classList.remove("bad");
   if(!keep&&autoGhi)zh(gw);
 }
+function startGhi(){
+  peekGhi=false;
+  ghiIds=sh(cur()).slice(0,numN());ghiIdx=0;show("#winGhi",false);
+  if(!ghiIds.length)return alert("Không có từ nào trong danh sách hiển thị!");
+  drawGhi();show("#ovGhi");$("#ghiInp").focus();setTimeout(fo,150);
+}
+function newGhi(){peekGhi=false;ghiIds=fresh(ghiIds,ghiIds.length);ghiIdx=0;show("#winGhi",false);drawGhi();fo()}
 function checkGhi(){
   if(!shown("#ovGhi")||shown("#winGhi"))return;
   if($("#ghiInp").value.trim()===W[gw][0]){if(rndGhi)drawGhi();else if(++ghiIdx>=ghiIds.length)show("#winGhi");else drawGhi()}
@@ -456,12 +475,24 @@ $("#ghiInp").addEventListener("compositionend",autoChk);
 $("#ghiInp").addEventListener("keydown",e=>{if(e.key=="Enter"&&!e.isComposing){e.preventDefault();checkGhi()}});
 $("#goGhi").onclick=()=>{closeAllOv();startGhi()};
 $("#newGhi").onclick=$("#newGhiSide").onclick=newGhi;
-$$("#ovGhi [data-gh]").forEach(b=>b.onclick=()=>{hideGhi[b.dataset.gh]=!hideGhi[b.dataset.gh];drawGhi(true);fo()});
-$("#rndGhi").onclick=()=>{rndGhi=!rndGhi;drawGhi();fo()};
+$$("#ovGhi [data-gh]").forEach(b=>b.onclick=()=>{peekGhi=false;hideGhi[b.dataset.gh]=!hideGhi[b.dataset.gh];drawGhi(true);fo()});
+$("#rndGhi").onclick=()=>{peekGhi=false;rndGhi=!rndGhi;drawGhi();fo()};
 $("#autoGhi").onclick=()=>{autoGhi=!autoGhi;drawGhi(true);if(autoGhi)zh(gw);fo()};
 $("#chkGhi").onclick=checkGhi;
 $("#againGhi").onclick=startGhi;
-$("#ghiCard").onclick=()=>{gw!=null&&zh(gw);fo()};
+$("#ghiCard").onclick=(e)=>{
+  if(gw==null){fo();return}
+  const rect=e.currentTarget.getBoundingClientRect();
+  const cx=e.clientX!=null?e.clientX:(e.changedTouches?.[0]?.clientX??rect.left+rect.width/2);
+  const isLeftHalf=(cx-rect.left)<rect.width/2;
+  if(isLeftHalf){
+    peekGhi=!peekGhi;
+    applyGhiVisibility();
+  } else {
+    zh(gw);
+  }
+  fo();
+};
 $("#closeGhi").onclick=$("#quitGhi").onclick=()=>{killSpeech();$("#ghiInp").blur();show("#ovGhi",false);show("#winGhi",false)};
 
 /* ===== Cài đặt ===== */
@@ -551,97 +582,70 @@ const updFs=()=>$("#fs").textContent=isFs()?"🗗 Close":"⛶ Full";
 $("#fs").onclick=()=>isFs()?(document.exitFullscreen||document.webkitExitFullscreen).call(document):(de.requestFullscreen||de.webkitRequestFullscreen)?.call(de);
 ["fullscreenchange","webkitfullscreenchange"].forEach(ev=>document.addEventListener(ev,updFs));
 
+/* ===== Kéo trái/phải trong tab Nối từ (chỉ kích hoạt khi buông tay) ===== */
+(function(){
+  const ov=document.getElementById("ov");
+  const pbody=document.getElementById("pbody");
+  let startX=null,startY=null,tracking=false;
+  const THRESHOLD=120;
+
+  function isActive(){
+    return ov.classList.contains("show")&&!document.getElementById("win").classList.contains("show");
+  }
+  function openSettingsMenu(){
+    if(!isActive())return;
+    ov.classList.toggle("mo");
+    navigator.vibrate?.(20);
+  }
+  function doCheckNow(){
+    if(!isActive())return;
+    if(typeof check==="function")check();
+  }
+  function onStart(e){
+    if(!isActive())return;
+    if(e.target.closest("#fab")||e.target.closest("aside"))return;
+    if(ov.classList.contains("mo"))return;
+    const t=e.touches?e.touches[0]:e;
+    startX=t.clientX;startY=t.clientY;tracking=true;
+  }
+  function onEnd(e){
+    if(!tracking||startX==null){tracking=false;return}
+    tracking=false;
+    let endX,endY;
+    if(e.changedTouches&&e.changedTouches[0]){
+      endX=e.changedTouches[0].clientX;endY=e.changedTouches[0].clientY;
+    }else{
+      endX=e.clientX;endY=e.clientY;
+    }
+    const dx=endX-startX,dy=endY-startY;
+    startX=null;startY=null;
+    if(Math.abs(dy)>Math.abs(dx))return;
+    if(dx<=-THRESHOLD)openSettingsMenu();
+    else if(dx>=THRESHOLD)doCheckNow();
+  }
+
+  pbody.addEventListener("touchstart",onStart,{passive:true});
+  pbody.addEventListener("touchend",onEnd);
+  pbody.addEventListener("touchcancel",()=>{tracking=false;startX=null;startY=null});
+
+  let pointerActive=false;
+  pbody.addEventListener("pointerdown",e=>{
+    if(e.pointerType==="touch")return;
+    pointerActive=true;onStart(e);
+  });
+  pbody.addEventListener("pointerup",e=>{
+    if(e.pointerType==="touch"||!pointerActive)return;
+    pointerActive=false;onEnd(e);
+  });
+  pbody.addEventListener("pointercancel",e=>{
+    if(e.pointerType==="touch")return;
+    pointerActive=false;tracking=false;startX=null;startY=null;
+  });
+})();
+
 loadData().then(()=>{updAutoBtn();render()}).catch(err=>{
   $("#cnt").textContent="";
   $("#list").innerHTML='<div class="empty">Không tải được '+esc(dataPath)+' ('+esc(String(err.message))+'). Hãy chạy bằng web server, không mở trực tiếp file. Vào ⚙️ Cài đặt để đổi đường dẫn data.</div>';
 });
-</script>
-<script>
-/* ===== Kéo trái/phải trong tab Nối từ (chỉ kích hoạt khi buông tay) ===== */
-(function(){
-  const ov = document.getElementById("ov");
-  const pbody = document.getElementById("pbody");
-  let startX = null, startY = null, tracking = false;
-  const THRESHOLD = 120;   // ngưỡng kéo ngang
-
-  function isActive(){
-    return ov.classList.contains("show") && !document.getElementById("win").classList.contains("show");
-  }
-
-  function openSettingsMenu(){
-    if(!isActive()) return;
-    ov.classList.toggle("mo");
-    navigator.vibrate?.(20);
-  }
-
-  function doCheckNow(){
-    if(!isActive()) return;
-    if(typeof check === "function") check();
-  }
-
-  function onStart(e){
-    if(!isActive()) return;
-    if(e.target.closest("#fab") || e.target.closest("aside")) return;
-    if(ov.classList.contains("mo")) return;
-    const t = e.touches ? e.touches[0] : e;
-    startX = t.clientX;
-    startY = t.clientY;
-    tracking = true;
-  }
-
-  function onEnd(e){
-    if(!tracking || startX == null){ tracking = false; return; }
-    tracking = false;
-
-    // Lấy vị trí cuối
-    let endX, endY;
-    if(e.changedTouches && e.changedTouches[0]){
-      endX = e.changedTouches[0].clientX;
-      endY = e.changedTouches[0].clientY;
-    } else {
-      endX = e.clientX;
-      endY = e.clientY;
-    }
-
-    const dx = endX - startX;
-    const dy = endY - startY;
-    startX = null;
-    startY = null;
-
-    // Nếu lệch dọc > lệch ngang -> hủy (đang cuộn dọc)
-    if(Math.abs(dy) > Math.abs(dx)) return;
-
-    if(dx <= -THRESHOLD){
-      // Kéo sang trái 120px -> mở settings
-      openSettingsMenu();
-    } else if(dx >= THRESHOLD){
-      // Kéo sang phải 120px -> check đáp án
-      doCheckNow();
-    }
-  }
-
-  // Touch events (mobile)
-  pbody.addEventListener("touchstart", onStart, {passive:true});
-  pbody.addEventListener("touchend", onEnd);
-  pbody.addEventListener("touchcancel", ()=>{ tracking = false; startX = null; startY = null; });
-
-  // Pointer events (desktop) - bỏ qua touch để tránh double
-  let pointerActive = false;
-  pbody.addEventListener("pointerdown", e=>{
-    if(e.pointerType === "touch") return;
-    pointerActive = true;
-    onStart(e);
-  });
-  pbody.addEventListener("pointerup", e=>{
-    if(e.pointerType === "touch" || !pointerActive) return;
-    pointerActive = false;
-    onEnd(e);
-  });
-  pbody.addEventListener("pointercancel", e=>{
-    if(e.pointerType === "touch") return;
-    pointerActive = false;
-    tracking = false; startX = null; startY = null;
-  });
-})();
 </script>
 </body></html>
