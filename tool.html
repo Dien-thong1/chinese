@@ -2,253 +2,140 @@
 <html lang="vi">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, interactive-widget=resizes-content">
+<link rel="manifest" href="./manifest.json">
+<meta name="theme-color" content="#1e1e2e">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Live Editor">
 <title>Live Editor</title>
+<script>
+if ("serviceWorker" in navigator) {
+  addEventListener("load", function () {
+    navigator.serviceWorker.register("./sw.js").catch(function () {});
+  });
+}
+</script>
 <style>
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-  html, body { width: 100%; height: 100%; overflow: hidden; font-family: monospace; }
-
-  #iframe {
-    position: fixed;
-    inset: 0;
-    width: 100vw;
-    height: 100vh;
-    border: none;
-    background: #fff;
-    display: block;
-  }
-
-  #editorWrap {
-    position: fixed;
-    inset: 0;
-    width: 100vw;
-    height: 100vh;
-    background: #1e1e1e;
-    display: none;
-  }
-
+  :root { --bg:#fff; --ed:#1e1e2e; --fg:#cdd6f4; --bubble:#7c3aed; }
+  html, body { margin:0; height:100%; background:var(--bg); overflow:hidden; overscroll-behavior:none; }
+  #view { position:fixed; inset:0; width:100%; height:100%; border:0; display:block; background:#fff; }
+  #editor-wrap { position:fixed; inset:0; background:var(--ed); display:none; }
   #editor {
-    width: 100%;
-    height: 100%;
-    background: #1e1e1e;
-    color: #d4d4d4;
-    border: none;
-    outline: none;
-    resize: none;
-    padding: 16px;
-    font-family: 'Consolas', 'Monaco', monospace;
-    font-size: 14px;
-    line-height: 1.5;
-    tab-size: 2;
-    white-space: pre;
-    overflow: auto;
+    width:100%; height:100%; box-sizing:border-box; border:0; outline:0; resize:none;
+    background:var(--ed); color:var(--fg);
+    font:14px/1.5 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    padding:16px; padding-top:calc(16px + env(safe-area-inset-top, 0px));
+    padding-bottom:calc(16px + env(safe-area-inset-bottom, 0px));
+    white-space:pre; overflow:auto; tab-size:2;
   }
-
-  #toggleBtn {
-    position: fixed;
-    top: 20px;
-    left: 20px;
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    background: #007acc;
-    color: #fff;
-    border: 2px solid rgba(255,255,255,0.3);
-    cursor: grab;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 18px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-    z-index: 999999;
-    user-select: none;
-    touch-action: none;
-    transition: background 0.2s, transform 0.1s;
+  body.editing #editor-wrap { display:block; }
+  body.editing #view { visibility:hidden; }
+  #bubble {
+    position:fixed; z-index:99999; width:40px; height:40px; left:0; top:0;
+    border-radius:50%; background:var(--bubble); color:#fff;
+    display:flex; align-items:center; justify-content:center;
+    font:700 13px/1 ui-monospace, Menlo, monospace;
+    box-shadow:0 2px 10px rgba(0,0,0,.35); cursor:grab; user-select:none;
+    -webkit-user-select:none; touch-action:none; opacity:.9;
   }
-  #toggleBtn:hover { background: #0098ff; }
-  #toggleBtn:active { cursor: grabbing; transform: scale(0.95); }
-  #toggleBtn.dragging { transition: none; }
-  #toggleBtn svg { width: 20px; height: 20px; fill: #fff; pointer-events: none; }
+  #bubble:active { cursor:grabbing; opacity:1; }
 </style>
 </head>
 <body>
-
-<iframe id="iframe" sandbox="allow-scripts allow-modals allow-forms allow-popups allow-same-origin"></iframe>
-
-<div id="editorWrap">
-  <textarea id="editor" spellcheck="false" placeholder="Nhập HTML/CSS/JS ở đây..."></textarea>
-</div>
-
-<button id="toggleBtn" title="Toggle Editor">
-  <svg id="iconCode" viewBox="0 0 24 24"><path d="M8.7 15.9 4.8 12l3.9-3.9L7.3 6.7 2 12l5.3 5.3 1.4-1.4zm6.6 0 3.9-3.9-3.9-3.9 1.4-1.4L22 12l-5.3 5.3-1.4-1.4z"/></svg>
-</button>
+<iframe id="view" sandbox="allow-scripts allow-same-origin allow-forms allow-modals allow-popups allow-downloads"></iframe>
+<div id="editor-wrap"><textarea id="editor" spellcheck="false" autocapitalize="off" autocomplete="off" autocorrect="off"></textarea></div>
+<div id="bubble" title="Chuyển đổi">&lt;/&gt;</div>
 
 <script>
-(function() {
-  const STORAGE_KEY = 'love3107';
-  const iframe = document.getElementById('iframe');
-  const editorWrap = document.getElementById('editorWrap');
-  const editor = document.getElementById('editor');
-  const toggleBtn = document.getElementById('toggleBtn');
-  const iconCode = document.getElementById('iconCode');
+(function () {
+  var KEY = 'love3107', POS_KEY = 'love3107_pos';
+  var DEFAULT_CODE = '<!DOCTYPE html>\n<html>\n<head>\n<meta charset="UTF-8">\n<meta name="viewport" content="width=device-width, initial-scale=1">\n<style>\n  body { font-family: sans-serif; display:grid; place-items:center; height:100vh; margin:0; background:#fdf2f8; }\n  h1 { color:#db2777; }\n</style>\n</head>\n<body>\n  <h1 id="t">Xin chào ❤️</h1>\n  <script>\n    document.getElementById("t").onclick = function(){ this.textContent = "Bạn vừa bấm!"; };\n  <\/script>\n</body>\n</html>';
 
-  // Icon paths
-  const ICON_CODE = 'M8.7 15.9 4.8 12l3.9-3.9L7.3 6.7 2 12l5.3 5.3 1.4-1.4zm6.6 0 3.9-3.9-3.9-3.9 1.4-1.4L22 12l-5.3 5.3-1.4-1.4z';
-  const ICON_EYE  = 'M12 4.5C7 4.5 2.7 7.6 1 12c1.7 4.4 6 7.5 11 7.5s9.3-3.1 11-7.5c-1.7-4.4-6-7.5-11-7.5zm0 12.5a5 5 0 1 1 0-10 5 5 0 0 1 0 10zm0-8a3 3 0 1 0 0 6 3 3 0 0 0 0-6z';
+  var view = document.getElementById('view');
+  var ed = document.getElementById('editor');
+  var bubble = document.getElementById('bubble');
 
-  // Default content
-  const DEFAULT_CODE = `<!DOCTYPE html>
-<html>
-<head>
-<style>
-  body {
-    font-family: system-ui, sans-serif;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
-    margin: 0;
-    background: linear-gradient(135deg, #667eea, #764ba2);
-    color: white;
-  }
-  h1 { font-size: 3rem; }
-</style>
-</head>
-<body>
-  <h1>Hello 👋</h1>
-  <script>
-    console.log('Ready!');
-  <\/script>
-</body>
-</html>`;
+  function load(k) { try { return localStorage.getItem(k); } catch (e) { return null; } }
+  function save(k, v) { try { localStorage.setItem(k, v); } catch (e) {} }
 
-  // Load saved code
-  let savedCode = localStorage.getItem(STORAGE_KEY);
-  if (savedCode === null || savedCode === undefined) {
-    savedCode = DEFAULT_CODE;
-    localStorage.setItem(STORAGE_KEY, savedCode);
-  }
-  editor.value = savedCode;
+  var saved = load(KEY);
+  ed.value = saved !== null ? saved : DEFAULT_CODE;
+  render();
 
-  // Render code into iframe
-  function render(code) {
-    iframe.srcdoc = code;
-  }
-
-  // Debounced update
-  let timer = null;
-  editor.addEventListener('input', () => {
-    clearTimeout(timer);
-    timer = setTimeout(() => {
-      const code = editor.value;
-      localStorage.setItem(STORAGE_KEY, code);
-      render(code);
-    }, 200);
+  var t;
+  function render() { view.srcdoc = ed.value; }
+  ed.addEventListener('input', function () {
+    save(KEY, ed.value);
+    clearTimeout(t);
+    t = setTimeout(render, 120);
   });
 
-  // Initial render
-  render(savedCode);
-
-  // Toggle view
-  let showingEditor = false;
-  function setView(showEditor) {
-    showingEditor = showEditor;
-    if (showEditor) {
-      editorWrap.style.display = 'block';
-      iframe.style.display = 'none';
-      iconCode.firstElementChild.setAttribute('d', ICON_EYE);
-      // Ensure iframe is up to date
-      const code = editor.value;
-      if (iframe.srcdoc !== code) render(code);
-    } else {
-      editorWrap.style.display = 'none';
-      iframe.style.display = 'block';
-      iconCode.firstElementChild.setAttribute('d', ICON_CODE);
+  // Phím Tab => 2 dấu cách
+  ed.addEventListener('keydown', function (e) {
+    if (e.key === 'Tab') {
+      e.preventDefault();
+      var s = ed.selectionStart, en = ed.selectionEnd;
+      ed.value = ed.value.slice(0, s) + '  ' + ed.value.slice(en);
+      ed.selectionStart = ed.selectionEnd = s + 2;
+      ed.dispatchEvent(new Event('input'));
     }
-  }
-
-  toggleBtn.addEventListener('click', (e) => {
-    if (toggleBtn.dataset.dragged === '1') {
-      toggleBtn.dataset.dragged = '0';
-      return;
-    }
-    setView(!showingEditor);
   });
 
-  // ===== Drag logic =====
-  let isDragging = false;
-  let startX = 0, startY = 0;
-  let startLeft = 0, startTop = 0;
-  let moved = false;
-  const DRAG_THRESHOLD = 5;
-
-  // Initialize position from current CSS position (top/left)
-  function getCurrentPos() {
-    const rect = toggleBtn.getBoundingClientRect();
-    return { left: rect.left, top: rect.top };
+  function setMode(editing) {
+    document.body.classList.toggle('editing', editing);
+    bubble.textContent = editing ? '▶' : '</>';
+    if (editing) ed.focus();
   }
 
-  function setPos(left, top) {
-    const maxLeft = window.innerWidth - toggleBtn.offsetWidth;
-    const maxTop = window.innerHeight - toggleBtn.offsetHeight;
-    left = Math.max(0, Math.min(left, maxLeft));
-    top = Math.max(0, Math.min(top, maxTop));
-    toggleBtn.style.left = left + 'px';
-    toggleBtn.style.top = top + 'px';
-    toggleBtn.style.right = 'auto';
-    toggleBtn.style.bottom = 'auto';
+  // Vị trí bóng
+  var SIZE = 40;
+  function clamp(x, y) {
+    return {
+      x: Math.max(0, Math.min(window.innerWidth - SIZE, x)),
+      y: Math.max(0, Math.min(window.innerHeight - SIZE, y))
+    };
   }
-
-  function onPointerDown(e) {
-    if (e.button !== undefined && e.button !== 0) return;
-    isDragging = true;
-    moved = false;
-    const pos = getCurrentPos();
-    startLeft = pos.left;
-    startTop = pos.top;
-    startX = e.clientX;
-    startY = e.clientY;
-    toggleBtn.classList.add('dragging');
-    toggleBtn.setPointerCapture && toggleBtn.setPointerCapture(e.pointerId);
-    e.preventDefault();
+  function place(x, y) {
+    var p = clamp(x, y);
+    bubble.style.left = p.x + 'px';
+    bubble.style.top = p.y + 'px';
+    return p;
   }
+  var pos = null;
+  try { pos = JSON.parse(load(POS_KEY)); } catch (e) {}
+  if (pos && typeof pos.x === 'number') place(pos.x, pos.y);
+  else place(window.innerWidth - SIZE - 16, window.innerHeight - SIZE - 80);
 
-  function onPointerMove(e) {
-    if (!isDragging) return;
-    const dx = e.clientX - startX;
-    const dy = e.clientY - startY;
-    if (!moved && Math.hypot(dx, dy) > DRAG_THRESHOLD) {
-      moved = true;
-    }
-    if (moved) {
-      setPos(startLeft + dx, startTop + dy);
-    }
-  }
-
-  function onPointerUp(e) {
-    if (!isDragging) return;
-    isDragging = false;
-    toggleBtn.classList.remove('dragging');
-    if (moved) {
-      toggleBtn.dataset.dragged = '1';
-      // Reset shortly after so next click works
-      setTimeout(() => { toggleBtn.dataset.dragged = '0'; }, 50);
-    }
-  }
-
-  toggleBtn.addEventListener('pointerdown', onPointerDown);
-  window.addEventListener('pointermove', onPointerMove);
-  window.addEventListener('pointerup', onPointerUp);
-  window.addEventListener('pointercancel', onPointerUp);
-
-  // Prevent native drag
-  toggleBtn.addEventListener('dragstart', (e) => e.preventDefault());
-
-  // Keep button in view on resize
-  window.addEventListener('resize', () => {
-    const rect = toggleBtn.getBoundingClientRect();
-    setPos(rect.left, rect.top);
+  window.addEventListener('resize', function () {
+    place(parseFloat(bubble.style.left) || 0, parseFloat(bubble.style.top) || 0);
   });
+
+  // Kéo thả vs bấm
+  var drag = null;
+  bubble.addEventListener('pointerdown', function (e) {
+    bubble.setPointerCapture(e.pointerId);
+    drag = { sx: e.clientX, sy: e.clientY, ox: parseFloat(bubble.style.left), oy: parseFloat(bubble.style.top), moved: false };
+  });
+  bubble.addEventListener('pointermove', function (e) {
+    if (!drag) return;
+    var dx = e.clientX - drag.sx, dy = e.clientY - drag.sy;
+    if (!drag.moved && Math.hypot(dx, dy) < 5) return;
+    drag.moved = true;
+    place(drag.ox + dx, drag.oy + dy);
+  });
+  function end(e) {
+    if (!drag) return;
+    var d = drag; drag = null;
+    if (d.moved) {
+      save(POS_KEY, JSON.stringify({ x: parseFloat(bubble.style.left), y: parseFloat(bubble.style.top) }));
+    } else if (e.type === 'pointerup') {
+      setMode(!document.body.classList.contains('editing'));
+    }
+  }
+  bubble.addEventListener('pointerup', end);
+  bubble.addEventListener('pointercancel', end);
 })();
 </script>
 </body>
