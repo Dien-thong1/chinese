@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Live Editor</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { width: 100%; height: 100%; overflow: hidden; font-family: monospace; }
+
+  #iframe {
+    position: fixed;
+    inset: 0;
+    width: 100vw;
+    height: 100vh;
+    border: none;
+    background: #fff;
+    display: block;
+  }
+
+  #editorWrap {
+    position: fixed;
+    inset: 0;
+    width: 100vw;
+    height: 100vh;
+    background: #1e1e1e;
+    display: none;
+  }
+
+  #editor {
+    width: 100%;
+    height: 100%;
+    background: #1e1e1e;
+    color: #d4d4d4;
+    border: none;
+    outline: none;
+    resize: none;
+    padding: 16px;
+    font-family: 'Consolas', 'Monaco', monospace;
+    font-size: 14px;
+    line-height: 1.5;
+    tab-size: 2;
+    white-space: pre;
+    overflow: auto;
+  }
+
+  #toggleBtn {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: #007acc;
+    color: #fff;
+    border: 2px solid rgba(255,255,255,0.3);
+    cursor: grab;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    z-index: 999999;
+    user-select: none;
+    touch-action: none;
+    transition: background 0.2s, transform 0.1s;
+  }
+  #toggleBtn:hover { background: #0098ff; }
+  #toggleBtn:active { cursor: grabbing; transform: scale(0.95); }
+  #toggleBtn.dragging { transition: none; }
+  #toggleBtn svg { width: 20px; height: 20px; fill: #fff; pointer-events: none; }
+</style>
+</head>
+<body>
+
+<iframe id="iframe" sandbox="allow-scripts allow-modals allow-forms allow-popups allow-same-origin"></iframe>
+
+<div id="editorWrap">
+  <textarea id="editor" spellcheck="false" placeholder="Nhập HTML/CSS/JS ở đây..."></textarea>
+</div>
+
+<button id="toggleBtn" title="Toggle Editor">
+  <svg id="iconCode" viewBox="0 0 24 24"><path d="M8.7 15.9 4.8 12l3.9-3.9L7.3 6.7 2 12l5.3 5.3 1.4-1.4zm6.6 0 3.9-3.9-3.9-3.9 1.4-1.4L22 12l-5.3 5.3-1.4-1.4z"/></svg>
+</button>
+
+<script>
+(function() {
+  const STORAGE_KEY = 'love3107';
+  const iframe = document.getElementById('iframe');
+  const editorWrap = document.getElementById('editorWrap');
+  const editor = document.getElementById('editor');
+  const toggleBtn = document.getElementById('toggleBtn');
+  const iconCode = document.getElementById('iconCode');
+
+  // Icon paths
+  const ICON_CODE = 'M8.7 15.9 4.8 12l3.9-3.9L7.3 6.7 2 12l5.3 5.3 1.4-1.4zm6.6 0 3.9-3.9-3.9-3.9 1.4-1.4L22 12l-5.3 5.3-1.4-1.4z';
+  const ICON_EYE  = 'M12 4.5C7 4.5 2.7 7.6 1 12c1.7 4.4 6 7.5 11 7.5s9.3-3.1 11-7.5c-1.7-4.4-6-7.5-11-7.5zm0 12.5a5 5 0 1 1 0-10 5 5 0 0 1 0 10zm0-8a3 3 0 1 0 0 6 3 3 0 0 0 0-6z';
+
+  // Default content
+  const DEFAULT_CODE = `<!DOCTYPE html>
+<html>
+<head>
+<style>
+  body {
+    font-family: system-ui, sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    margin: 0;
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    color: white;
+  }
+  h1 { font-size: 3rem; }
+</style>
+</head>
+<body>
+  <h1>Hello 👋</h1>
+  <script>
+    console.log('Ready!');
+  <\/script>
+</body>
+</html>`;
+
+  // Load saved code
+  let savedCode = localStorage.getItem(STORAGE_KEY);
+  if (savedCode === null || savedCode === undefined) {
+    savedCode = DEFAULT_CODE;
+    localStorage.setItem(STORAGE_KEY, savedCode);
+  }
+  editor.value = savedCode;
+
+  // Render code into iframe
+  function render(code) {
+    iframe.srcdoc = code;
+  }
+
+  // Debounced update
+  let timer = null;
+  editor.addEventListener('input', () => {
+    clearTimeout(timer);
+    timer = setTimeout(() => {
+      const code = editor.value;
+      localStorage.setItem(STORAGE_KEY, code);
+      render(code);
+    }, 200);
+  });
+
+  // Initial render
+  render(savedCode);
+
+  // Toggle view
+  let showingEditor = false;
+  function setView(showEditor) {
+    showingEditor = showEditor;
+    if (showEditor) {
+      editorWrap.style.display = 'block';
+      iframe.style.display = 'none';
+      iconCode.firstElementChild.setAttribute('d', ICON_EYE);
+      // Ensure iframe is up to date
+      const code = editor.value;
+      if (iframe.srcdoc !== code) render(code);
+    } else {
+      editorWrap.style.display = 'none';
+      iframe.style.display = 'block';
+      iconCode.firstElementChild.setAttribute('d', ICON_CODE);
+    }
+  }
+
+  toggleBtn.addEventListener('click', (e) => {
+    if (toggleBtn.dataset.dragged === '1') {
+      toggleBtn.dataset.dragged = '0';
+      return;
+    }
+    setView(!showingEditor);
+  });
+
+  // ===== Drag logic =====
+  let isDragging = false;
+  let startX = 0, startY = 0;
+  let startLeft = 0, startTop = 0;
+  let moved = false;
+  const DRAG_THRESHOLD = 5;
+
+  // Initialize position from current CSS position (top/left)
+  function getCurrentPos() {
+    const rect = toggleBtn.getBoundingClientRect();
+    return { left: rect.left, top: rect.top };
+  }
+
+  function setPos(left, top) {
+    const maxLeft = window.innerWidth - toggleBtn.offsetWidth;
+    const maxTop = window.innerHeight - toggleBtn.offsetHeight;
+    left = Math.max(0, Math.min(left, maxLeft));
+    top = Math.max(0, Math.min(top, maxTop));
+    toggleBtn.style.left = left + 'px';
+    toggleBtn.style.top = top + 'px';
+    toggleBtn.style.right = 'auto';
+    toggleBtn.style.bottom = 'auto';
+  }
+
+  function onPointerDown(e) {
+    if (e.button !== undefined && e.button !== 0) return;
+    isDragging = true;
+    moved = false;
+    const pos = getCurrentPos();
+    startLeft = pos.left;
+    startTop = pos.top;
+    startX = e.clientX;
+    startY = e.clientY;
+    toggleBtn.classList.add('dragging');
+    toggleBtn.setPointerCapture && toggleBtn.setPointerCapture(e.pointerId);
+    e.preventDefault();
+  }
+
+  function onPointerMove(e) {
+    if (!isDragging) return;
+    const dx = e.clientX - startX;
+    const dy = e.clientY - startY;
+    if (!moved && Math.hypot(dx, dy) > DRAG_THRESHOLD) {
+      moved = true;
+    }
+    if (moved) {
+      setPos(startLeft + dx, startTop + dy);
+    }
+  }
+
+  function onPointerUp(e) {
+    if (!isDragging) return;
+    isDragging = false;
+    toggleBtn.classList.remove('dragging');
+    if (moved) {
+      toggleBtn.dataset.dragged = '1';
+      // Reset shortly after so next click works
+      setTimeout(() => { toggleBtn.dataset.dragged = '0'; }, 50);
+    }
+  }
+
+  toggleBtn.addEventListener('pointerdown', onPointerDown);
+  window.addEventListener('pointermove', onPointerMove);
+  window.addEventListener('pointerup', onPointerUp);
+  window.addEventListener('pointercancel', onPointerUp);
+
+  // Prevent native drag
+  toggleBtn.addEventListener('dragstart', (e) => e.preventDefault());
+
+  // Keep button in view on resize
+  window.addEventListener('resize', () => {
+    const rect = toggleBtn.getBoundingClientRect();
+    setPos(rect.left, rect.top);
+  });
+})();
+</script>
+</body>
+</html>
