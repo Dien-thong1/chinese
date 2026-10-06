@@ -1,0 +1,500 @@
+我爱中国|Wǒ ài Zhōngguó|I love China
+我的爱好是看书。|Wǒ de àihào shì kàn shū.|My hobby is reading.
+我有八本书。|Wǒ yǒu bā běn shū.|I have eight books.
+爸爸是医生。|Bàba shì yīshēng.|Dad is a doctor.
+我们走吧。|Wǒmen zǒu ba.|Let's go.
+我喜欢白衬衫。|Wǒ xǐhuan bái chènshān.|I like white shirts.
+白天我很忙。|Báitiān wǒ hěn máng.|I am busy during the day.
+这本书有一百页。|Zhè běn shū yǒu yībǎi yè.|This book has one hundred pages.
+我们班有二十个学生。|Wǒmen bān yǒu èrshí ge xuésheng.|Our class has twenty students.
+我吃了一半。|Wǒ chīle yíbàn.|I ate half.
+我学中文半年了。|Wǒ xué Zhōngwén bànnián le.|I have studied Chinese for half a year.
+我等了半天。|Wǒ děngle bàntiān.|I waited half a day.
+你能帮我吗？|Nǐ néng bāng wǒ ma?|Can you help me?
+请帮我一个忙。|Qǐng bāng wǒ yí ge máng.|Please help me.
+这个包很贵。|Zhège bāo hěn guì.|This bag is expensive.
+我早上吃包子。|Wǒ zǎoshang chī bāozi.|I eat steamed buns in the morning.
+请给我一杯水。|Qǐng gěi wǒ yì bēi shuǐ.|Please give me a cup of water.
+杯子在桌子上。|Bēizi zài zhuōzi shàng.|The cup is on the table.
+北京在中国北边。|Běijīng zài Zhōngguó běibiān.|Beijing is in the north of China.
+学校在北边。|Xuéxiào zài běibiān.|The school is on the north side.
+我想去北京。|Wǒ xiǎng qù Běijīng.|I want to go to Beijing.
+我有三本书。|Wǒ yǒu sān běn shū.|I have three books.
+这是我的本子。|Zhè shì wǒ de běnzi.|This is my notebook.
+他比我高。|Tā bǐ wǒ gāo.|He is taller than me.
+别忘了。|Bié wàng le.|Don't forget.
+我不要别的。|Wǒ bú yào biéde.|I don't want anything else.
+别等别人。|Bié děng biérén.|Don't wait for others.
+他病了。|Tā bìng le.|He is sick.
+病人在医院。|Bìngrén zài yīyuàn.|The patient is in the hospital.
+这个房间不大。|Zhège fángjiān bú dà.|This room is not big.
+你的答案不对。|Nǐ de dá'àn bú duì.|Your answer is wrong.
+不客气！|Bú kèqi!|You're welcome!
+你不用来。|Nǐ bú yòng lái.|You don't have to come.
+我不喝茶。|Wǒ bù hē chá.|I don't drink tea.
+这个菜很好吃。|Zhège cài hěn hǎochī.|This dish is delicious.
+我喜欢喝茶。|Wǒ xǐhuan hē chá.|I like drinking tea.
+他汉语很差。|Tā Hànyǔ hěn chà.|His Chinese is poor.
+我常去图书馆。|Wǒ cháng qù túshūguǎn.|I often go to the library.
+他常常迟到。|Tā chángcháng chídào.|He is often late.
+她会唱中文歌。|Tā huì chàng Zhōngwén gē.|She can sing Chinese songs.
+我喜欢唱歌。|Wǒ xǐhuan chànggē.|I like singing.
+车来了。|Chē lái le.|The vehicle is coming.
+我买了两张车票。|Wǒ mǎile liǎng zhāng chēpiào.|I bought two vehicle tickets.
+车上人很多。|Chē shàng rén hěn duō.|There are many people on the vehicle.
+我在车站等你。|Wǒ zài chēzhàn děng nǐ.|I am waiting for you at the station.
+我想吃面条。|Wǒ xiǎng chī miàntiáo.|I want to eat noodles.
+我们去吃饭吧。|Wǒmen qù chīfàn ba.|Let's go eat.
+请出示护照。|Qǐng chūshì hùzhào.|Please show your passport.
+你出来一下。|Nǐ chūlái yíxià.|Come out for a moment.
+我们出去玩儿吧。|Wǒmen chūqù wánr ba.|Let's go out to play.
+今天穿什么？|Jīntiān chuān shénme?|What should I wear today?
+猫在床上。|Māo zài chuáng shàng.|The cat is on the bed.
+我去过两次北京。|Wǒ qùguo liǎng cì Běijīng.|I have been to Beijing twice.
+我从越南来。|Wǒ cóng Yuènán lái.|I come from Vietnam.
+你错了。|Nǐ cuò le.|You are wrong.
+他打篮球。|Tā dǎ lánqiú.|He plays basketball.
+我们打车去吧。|Wǒmen dǎchē qù ba.|Let's take a taxi.
+我给妈妈打电话。|Wǒ gěi māma dǎ diànhuà.|I call mom.
+请打开门。|Qǐng dǎkāi mén.|Please open the door.
+下午我们去打球。|Xiàwǔ wǒmen qù dǎqiú.|In the afternoon we go play ball.
+这个苹果很大。|Zhège píngguǒ hěn dà.|This apple is very big.
+我在大学学习。|Wǒ zài dàxué xuéxí.|I study at university.
+他是大学生。|Tā shì dàxuéshēng.|He is a university student.
+我到北京了。|Wǒ dào Běijīng le.|I arrived in Beijing.
+我得到一份礼物。|Wǒ dédào yí fèn lǐwù.|I got a gift.
+他慢慢地走。|Tā mànmàn de zǒu.|He walks slowly.
+这是我的书。|Zhè shì wǒ de shū.|This is my book.
+我在等你。|Wǒ zài děng nǐ.|I am waiting for you.
+地是湿的。|Dì shì shī de.|The ground is wet.
+请告诉我地点。|Qǐng gàosu wǒ dìdiǎn.|Please tell me the location.
+这个地方很漂亮。|Zhège dìfang hěn piàoliang.|This place is beautiful.
+地上有一本书。|Dìshàng yǒu yì běn shū.|There is a book on the ground.
+我看地图。|Wǒ kàn dìtú.|I look at the map.
+我弟弟是学生。|Wǒ dìdi shì xuésheng.|My younger brother is a student.
+这是我第一次来中国。|Zhè shì wǒ dì yī cì lái Zhōngguó.|This is my first time in China.
+现在三点。|Xiànzài sān diǎn.|It is three o'clock now.
+我们用电。|Wǒmen yòng diàn.|We use electricity.
+我给你打电话。|Wǒ gěi nǐ dǎ diànhuà.|I call you.
+我用电脑工作。|Wǒ yòng diànnǎo gōngzuò.|I use a computer to work.
+我在看电视。|Wǒ zài kàn diànshì.|I am watching TV.
+电视机在房间里。|Diànshìjī zài fángjiān lǐ.|The television set is in the room.
+我们去看电影吧。|Wǒmen qù kàn diànyǐng ba.|Let's go watch a movie.
+电影院很近。|Diànyǐngyuàn hěn jìn.|The cinema is very close.
+太阳从东边出来。|Tàiyáng cóng dōngbiān chūlái.|The sun rises from the east.
+学校在东边。|Xuéxiào zài dōngbiān.|The school is on the east side.
+这是什么东西？|Zhè shì shénme dōngxi?|What is this thing?
+别动。|Bié dòng.|Don't move.
+他的动作很快。|Tā de dòngzuò hěn kuài.|His movements are fast.
+我们都是学生。|Wǒmen dōu shì xuésheng.|We are all students.
+请读这个字。|Qǐng dú zhège zì.|Please read this character.
+他在读书。|Tā zài dúshū.|He is reading/studying.
+你说得对。|Nǐ shuō de duì.|You are right.
+对不起，我来晚了。|Duìbuqǐ, wǒ lái wǎn le.|Sorry, I'm late.
+这里人很多。|Zhèlǐ rén hěn duō.|There are many people here.
+这个多少钱？|Zhège duōshao qián?|How much is this?
+我饿了。|Wǒ è le.|I am hungry.
+他有一个儿子。|Tā yǒu yí ge érzi.|He has a son.
+一加一等于二。|Yī jiā yī děngyú èr.|One plus one equals two.
+我想吃饭。|Wǒ xiǎng chīfàn.|I want to eat.
+我们在饭店吃饭。|Wǒmen zài fàndiàn chīfàn.|We eat at a restaurant.
+我的房间很小。|Wǒ de fángjiān hěn xiǎo.|My room is small.
+他的房子很大。|Tā de fángzi hěn dà.|His house is big.
+请把书放在桌子上。|Qǐng bǎ shū fàng zài zhuōzi shàng.|Please put the book on the table.
+我们明天放假。|Wǒmen míngtiān fàngjià.|We have a holiday tomorrow.
+学生放学了。|Xuésheng fàngxué le.|The students finished school.
+鸟会飞。|Niǎo huì fēi.|Birds can fly.
+我坐飞机去北京。|Wǒ zuò fēijī qù Běijīng.|I go to Beijing by plane.
+我非常高兴。|Wǒ fēicháng gāoxìng.|I am very happy.
+现在八点十分。|Xiànzài bā diǎn shí fēn.|It is 8:10 now.
+今天风很大。|Jīntiān fēng hěn dà.|The wind is strong today.
+衣服干了。|Yīfu gān le.|The clothes are dry.
+房间很干净。|Fángjiān hěn gānjìng.|The room is clean.
+他干得很好。|Tā gàn de hěn hǎo.|He works well.
+你在干什么？|Nǐ zài gàn shénme?|What are you doing?
+他很高。|Tā hěn gāo.|He is tall.
+我很高兴认识你。|Wǒ hěn gāoxìng rènshi nǐ.|I am happy to meet you.
+请告诉我他的名字。|Qǐng gàosu wǒ tā de míngzi.|Please tell me his name.
+我哥哥在工作。|Wǒ gēge zài gōngzuò.|My older brother is working.
+这首歌很好听。|Zhè shǒu gē hěn hǎotīng.|This song sounds good.
+我有三个朋友。|Wǒ yǒu sān ge péngyou.|I have three friends.
+他给我一本书。|Tā gěi wǒ yì běn shū.|He gives me a book.
+我跟你一起去。|Wǒ gēn nǐ yìqǐ qù.|I go with you.
+他是工人。|Tā shì gōngrén.|He is a worker.
+我在医院工作。|Wǒ zài yīyuàn gōngzuò.|I work at a hospital.
+请关门。|Qǐng guān mén.|Please close the door.
+请关上窗户。|Qǐng guānshàng chuānghu.|Please close the window.
+这个手机太贵了。|Zhège shǒujī tài guì le.|This phone is too expensive.
+我爱我的国。|Wǒ ài wǒ de guó.|I love my country.
+中国是一个国家。|Zhōngguó shì yí ge guójiā.|China is a country.
+他在国外工作。|Tā zài guówài gōngzuò.|He works abroad.
+我去过中国。|Wǒ qùguo Zhōngguó.|I have been to China.
+他还在睡觉。|Tā hái zài shuìjiào.|He is still sleeping.
+你喝茶还是喝咖啡？|Nǐ hē chá háishi hē kāfēi?|Do you drink tea or coffee?
+我还有一本书。|Wǒ hái yǒu yì běn shū.|I also have a book.
+那个孩子很可爱。|Nàge háizi hěn kě'ài.|That child is very cute.
+我在学汉语。|Wǒ zài xué Hànyǔ.|I am learning Chinese.
+这个汉字很难写。|Zhège Hànzì hěn nán xiě.|This Chinese character is hard to write.
+今天天气很好。|Jīntiān tiānqì hěn hǎo.|The weather is nice today.
+这个菜很好吃。|Zhège cài hěn hǎochī.|This dish is delicious.
+那件衣服很好看。|Nà jiàn yīfu hěn hǎokàn.|That piece of clothing is nice-looking.
+这首歌很好听。|Zhè shǒu gē hěn hǎotīng.|This song is pleasant to hear.
+这个游戏很好玩儿。|Zhège yóuxì hěn hǎowánr.|This game is fun.
+今天是几月几号？|Jīntiān shì jǐ yuè jǐ hào?|What is the date today?
+我想喝水。|Wǒ xiǎng hē shuǐ.|I want to drink water.
+我和他是朋友。|Wǒ hé tā shì péngyou.|He and I are friends.
+她很高兴。|Tā hěn gāoxìng.|She is very happy.
+他在我后边。|Tā zài wǒ hòubian.|He is behind me.
+学校在后边。|Xuéxiào zài hòubian.|The school is behind.
+后天我去北京。|Hòutiān wǒ qù Běijīng.|I will go to Beijing the day after tomorrow.
+我喜欢花。|Wǒ xǐhuan huā.|I like flowers.
+他的话很多。|Tā de huà hěn duō.|He talks a lot.
+这个手机坏了。|Zhège shǒujī huài le.|This phone is broken.
+请还我的书。|Qǐng huán wǒ de shū.|Please return my book.
+我要回家。|Wǒ yào huíjiā.|I want to go home.
+请回答我的问题。|Qǐng huídá wǒ de wèntí.|Please answer my question.
+他回到了学校。|Tā huídào le xuéxiào.|He returned to school.
+我下午回家。|Wǒ xiàwǔ huíjiā.|I go home in the afternoon.
+你什么时候回来？|Nǐ shénme shíhou huílái?|When will you come back?
+我要回去工作。|Wǒ yào huíqù gōngzuò.|I want to go back to work.
+我会说汉语。|Wǒ huì shuō Hànyǔ.|I can speak Chinese.
+我坐火车去。|Wǒ zuò huǒchē qù.|I go by train.
+机场很远。|Jīchǎng hěn yuǎn.|The airport is far.
+我买了机票。|Wǒ mǎile jīpiào.|I bought a plane ticket.
+我早上吃鸡蛋。|Wǒ zǎoshang chī jīdàn.|I eat eggs in the morning.
+你有几个朋友？|Nǐ yǒu jǐ ge péngyou?|How many friends do you have?
+请记住我的名字。|Qǐng jìzhù wǒ de míngzi.|Please remember my name.
+我记得他。|Wǒ jìde tā.|I remember him.
+请记住这句话。|Qǐng jìzhù zhè jù huà.|Please keep this sentence in mind.
+我家有四个人。|Wǒ jiā yǒu sì ge rén.|There are four people in my family.
+他在家里。|Tā zài jiālǐ.|He is at home.
+我爱我的家人。|Wǒ ài wǒ de jiārén.|I love my family members.
+这个房间很大。|Zhège fángjiān hěn dà.|This room is big.
+我想见你。|Wǒ xiǎng jiàn nǐ.|I want to see you.
+我们明天见面。|Wǒmen míngtiān jiànmiàn.|We will meet tomorrow.
+他教我汉语。|Tā jiāo wǒ Hànyǔ.|He teaches me Chinese.
+我叫小明。|Wǒ jiào Xiǎomíng.|My name is Xiaoming.
+教学楼在图书馆旁边。|Jiàoxuélóu zài túshūguǎn pángbiān.|The teaching building is next to the library.
+我姐姐是老师。|Wǒ jiějie shì lǎoshī.|My older sister is a teacher.
+我介绍一下我的朋友。|Wǒ jièshào yíxià wǒ de péngyou.|Let me introduce my friend.
+今年我学中文。|Jīnnián wǒ xué Zhōngwén.|This year I study Chinese.
+今天天气很好。|Jīntiān tiānqì hěn hǎo.|Today the weather is nice.
+请进。|Qǐng jìn.|Please come in.
+他进来了。|Tā jìnlái le.|He came in.
+我们进去吧。|Wǒmen jìnqù ba.|Let's go in.
+我有九本书。|Wǒ yǒu jiǔ běn shū.|I have nine books.
+我马上就来。|Wǒ mǎshàng jiù lái.|I will come right away.
+我觉得这个很好。|Wǒ juéde zhège hěn hǎo.|I think this is good.
+请开门。|Qǐng kāi mén.|Please open the door.
+他会开车。|Tā huì kāichē.|He can drive.
+我们下午开会。|Wǒmen xiàwǔ kāihuì.|We have a meeting in the afternoon.
+别开玩笑。|Bié kāi wánxiào.|Don't joke.
+我看书。|Wǒ kàn shū.|I read a book.
+我去医院看病。|Wǒ qù yīyuàn kànbìng.|I go to the hospital to see a doctor.
+我看到他了。|Wǒ kàndào tā le.|I saw him.
+我看见一只猫。|Wǒ kànjiàn yì zhī māo.|I saw a cat.
+明天要考试。|Míngtiān yào kǎoshì.|There is an exam tomorrow.
+我考试考得很好。|Wǒ kǎoshì kǎo de hěn hǎo.|I did well on the exam.
+我渴了，想喝水。|Wǒ kě le, xiǎng hē shuǐ.|I am thirsty, I want to drink water.
+我有三节课。|Wǒ yǒu sān jié kè.|I have three classes.
+这是我的课本。|Zhè shì wǒ de kèběn.|This is my textbook.
+我们读课文。|Wǒmen dú kèwén.|We read the lesson text.
+我家有五口人。|Wǒ jiā yǒu wǔ kǒu rén.|My family has five people.
+这个面包三块钱。|Zhège miànbāo sān kuài qián.|This bread is three yuan.
+他跑得很快。|Tā pǎo de hěn kuài.|He runs very fast.
+请你来我家。|Qǐng nǐ lái wǒ jiā.|Please come to my home.
+他来到了中国。|Tā láidào le Zhōngguó.|He came to China.
+那个老人很老。|Nàge lǎorén hěn lǎo.|That old person is very old.
+老人需要休息。|Lǎorén xūyào xiūxi.|Old people need rest.
+我的老师很好。|Wǒ de lǎoshī hěn hǎo.|My teacher is very good.
+我吃饭了。|Wǒ chīfàn le.|I have eaten.
+我很累。|Wǒ hěn lèi.|I am very tired.
+今天很冷。|Jīntiān hěn lěng.|Today is very cold.
+书在书包里。|Shū zài shūbāo lǐ.|The book is in the schoolbag.
+请进里边坐。|Qǐng jìn lǐbian zuò.|Please come inside and sit.
+我有两本书。|Wǒ yǒu liǎng běn shū.|I have two books.
+现在三点零五分。|Xiànzài sān diǎn líng wǔ fēn.|It is 3:05 now.
+我有六个苹果。|Wǒ yǒu liù ge píngguǒ.|I have six apples.
+我住在三楼。|Wǒ zhù zài sān lóu.|I live on the third floor.
+他在楼上。|Tā zài lóushàng.|He is upstairs.
+我在楼下等你。|Wǒ zài lóuxià děng nǐ.|I wait for you downstairs.
+这条路很长。|Zhè tiáo lù hěn cháng.|This road is very long.
+在路口左转。|Zài lùkǒu zuǒ zhuǎn.|Turn left at the intersection.
+路上车很多。|Lùshàng chē hěn duō.|There are many cars on the road.
+妈妈爱我。|Māma ài wǒ.|Mom loves me.
+过马路要小心。|Guò mǎlù yào xiǎoxīn.|Be careful when crossing the street.
+我马上来。|Wǒ mǎshàng lái.|I am coming right away.
+你吃饭了吗？|Nǐ chīfàn le ma?|Have you eaten?
+我买水果。|Wǒ mǎi shuǐguǒ.|I buy fruit.
+请慢一点。|Qǐng màn yìdiǎn.|Please slow down a bit.
+我今天很忙。|Wǒ jīntiān hěn máng.|I am very busy today.
+这个东西五毛钱。|Zhège dōngxi wǔ máo qián.|This thing is five mao.
+我没去。|Wǒ méi qù.|I didn't go.
+没关系，我可以等。|Méi guānxi, wǒ kěyǐ děng.|It doesn't matter, I can wait.
+没什么，别担心。|Méi shénme, bié dānxīn.|It's nothing, don't worry.
+没事儿，我很好。|Méi shìr, wǒ hěn hǎo.|It's okay, I'm fine.
+我没有钱。|Wǒ méiyǒu qián.|I don't have money.
+我妹妹很可爱。|Wǒ mèimei hěn kě'ài.|My younger sister is cute.
+门开了。|Mén kāi le.|The door opened.
+我在门口等你。|Wǒ zài ménkǒu děng nǐ.|I wait for you at the entrance.
+我买了两张门票。|Wǒ mǎile liǎng zhāng ménpiào.|I bought two admission tickets.
+我们是学生。|Wǒmen shì xuésheng.|We are students.
+我想吃米饭。|Wǒ xiǎng chī mǐfàn.|I want to eat rice.
+我早上吃面包。|Wǒ zǎoshang chī miànbāo.|I eat bread in the morning.
+我喜欢吃面条儿。|Wǒ xǐhuan chī miàntiáor.|I like eating noodles.
+你叫什么名字？|Nǐ jiào shénme míngzi?|What is your name?
+我明白了。|Wǒ míngbai le.|I understand.
+明年我去中国。|Míngnián wǒ qù Zhōngguó.|Next year I go to China.
+明天见。|Míngtiān jiàn.|See you tomorrow.
+请拿好你的书。|Qǐng ná hǎo nǐ de shū.|Please hold your book.
+你是哪国人？|Nǐ shì nǎ guó rén?|Which country are you from?
+你去哪里？|Nǐ qù nǎlǐ?|Where are you going?
+你在哪儿？|Nǐ zài nǎr?|Where are you?
+你喜欢哪些书？|Nǐ xǐhuan nǎxiē shū?|Which books do you like?
+那是我的书。|Nà shì wǒ de shū.|That is my book.
+他在那边。|Tā zài nàbiān.|He is over there.
+我去过那里。|Wǒ qùguo nàlǐ.|I have been there.
+他在那儿。|Tā zài nàr.|He is there.
+那些书是我的。|Nàxiē shū shì wǒ de.|Those books are mine.
+我喜欢喝奶。|Wǒ xǐhuan hē nǎi.|I like drinking milk.
+我奶奶很老。|Wǒ nǎinai hěn lǎo.|My grandmother is very old.
+他是男老师。|Tā shì nán lǎoshī.|He is a male teacher.
+那个男孩儿是我的朋友。|Nàge nánháir shì wǒ de péngyou.|That boy is my friend.
+她有男朋友了。|Tā yǒu nánpéngyou le.|She has a boyfriend.
+那个男人很高。|Nàge nánrén hěn gāo.|That man is tall.
+我们班有二十个男生。|Wǒmen bān yǒu èrshí ge nánshēng.|Our class has twenty boys.
+学校在南边。|Xuéxiào zài nánbiān.|The school is in the south.
+南边有一个公园。|Nánbiān yǒu yí ge gōngyuán.|There is a park on the south side.
+汉语很难。|Hànyǔ hěn nán.|Chinese is difficult.
+我很好，你呢？|Wǒ hěn hǎo, nǐ ne?|I'm fine, and you?
+我能帮你。|Wǒ néng bāng nǐ.|I can help you.
+你是学生。|Nǐ shì xuésheng.|You are a student.
+你们好！|Nǐmen hǎo!|Hello everyone!
+一年有十二个月。|Yì nián yǒu shí'èr ge yuè.|A year has twelve months.
+您好！|Nín hǎo!|Hello (polite)!
+我喝牛奶。|Wǒ hē niúnǎi.|I drink milk.
+她是女医生。|Tā shì nǚ yīshēng.|She is a female doctor.
+我女儿很聪明。|Wǒ nǚ'ér hěn cōngming.|My daughter is smart.
+那个女孩儿很漂亮。|Nàge nǚháir hěn piàoliang.|That girl is pretty.
+他有女朋友了。|Tā yǒu nǚpéngyou le.|He has a girlfriend.
+那个女人是老师。|Nàge nǚrén shì lǎoshī.|That woman is a teacher.
+我们班有十五个女生。|Wǒmen bān yǒu shíwǔ ge nǚshēng.|Our class has fifteen girls.
+学校在公园旁边。|Xuéxiào zài gōngyuán pángbiān.|The school is next to the park.
+他跑得很快。|Tā pǎo de hěn kuài.|He runs very fast.
+他是我的朋友。|Tā shì wǒ de péngyou.|He is my friend.
+我买了两张票。|Wǒ mǎile liǎng zhāng piào.|I bought two tickets.
+一周有七天。|Yì zhōu yǒu qī tiān.|A week has seven days.
+我每天七点起。|Wǒ měitiān qī diǎn qǐ.|I get up at seven every day.
+我早上六点起床。|Wǒ zǎoshang liù diǎn qǐchuáng.|I get up at six in the morning.
+请站起来。|Qǐng zhàn qǐlái.|Please stand up.
+我坐汽车去。|Wǒ zuò qìchē qù.|I go by car.
+他在我前边。|Tā zài wǒ qiánbian.|He is in front of me.
+学校在前边。|Xuéxiào zài qiánbian.|The school is ahead.
+前天我去了北京。|Qiántiān wǒ qùle Běijīng.|The day before yesterday I went to Beijing.
+我没有钱。|Wǒ méiyǒu qián.|I don't have money.
+我的钱包在哪儿？|Wǒ de qiánbāo zài nǎr?|Where is my wallet?
+请坐。|Qǐng zuò.|Please sit.
+我明天请假。|Wǒ míngtiān qǐngjià.|I will ask for leave tomorrow.
+请进，请坐。|Qǐng jìn, qǐng zuò.|Please come in, please sit.
+请问，图书馆在哪儿？|Qǐngwèn, túshūguǎn zài nǎr?|Excuse me, where is the library?
+请坐，别客气。|Qǐng zuò, bié kèqi.|Please sit, don't be polite.
+我喜欢打球。|Wǒ xǐhuan dǎqiú.|I like playing ball.
+我去学校。|Wǒ qù xuéxiào.|I go to school.
+去年我在中国。|Qùnián wǒ zài Zhōngguó.|Last year I was in China.
+今天很热。|Jīntiān hěn rè.|Today is very hot.
+中国人很多。|Zhōngguó rén hěn duō.|There are many Chinese people.
+我认识他。|Wǒ rènshi tā.|I know him.
+他学习很认真。|Tā xuéxí hěn rènzhēn.|He studies very seriously.
+今天是十月一日。|Jīntiān shì shí yuè yī rì.|Today is October 1st.
+请告诉我日期。|Qǐng gàosu wǒ rìqī.|Please tell me the date.
+我不吃肉。|Wǒ bù chī ròu.|I don't eat meat.
+我有三个苹果。|Wǒ yǒu sān ge píngguǒ.|I have three apples.
+那座山很高。|Nà zuò shān hěn gāo.|That mountain is very high.
+我去商场买东西。|Wǒ qù shāngchǎng mǎi dōngxi.|I go to the mall to buy things.
+商店在哪儿？|Shāngdiàn zài nǎr?|Where is the shop?
+书在桌子上。|Shū zài zhuōzi shàng.|The book is on the table.
+我每天八点上班。|Wǒ měitiān bā diǎn shàngbān.|I go to work at eight every day.
+猫在桌子上边。|Māo zài zhuōzi shàngbian.|The cat is on top of the table.
+请上车。|Qǐng shàngchē.|Please get on.
+上次我没去。|Shàng cì wǒ méi qù.|Last time I didn't go.
+我们八点上课。|Wǒmen bā diǎn shàngkè.|We have class at eight.
+我喜欢上网。|Wǒ xǐhuan shàngwǎng.|I like going online.
+上午我有课。|Shàngwǔ wǒ yǒu kè.|I have class in the morning.
+我每天上学。|Wǒ měitiān shàngxué.|I go to school every day.
+这里人很少。|Zhèlǐ rén hěn shǎo.|There are few people here.
+他是谁？|Tā shì shéi?|Who is he?
+我身上没钱。|Wǒ shēnshang méi qián.|I have no money on me.
+他身体很好。|Tā shēntǐ hěn hǎo.|He is in good health.
+你叫什么名字？|Nǐ jiào shénme míngzi?|What is your name?
+他生病了。|Tā shēngbìng le.|He got sick.
+别生气。|Bié shēngqì.|Don't get angry.
+今天是我的生日。|Jīntiān shì wǒ de shēngrì.|Today is my birthday.
+我有十本书。|Wǒ yǒu shí běn shū.|I have ten books.
+你什么时候来？|Nǐ shénme shíhou lái?|When are you coming?
+我没有时间。|Wǒ méiyǒu shíjiān.|I don't have time.
+我有事。|Wǒ yǒu shì.|I have something to do.
+请试一试。|Qǐng shì yí shì.|Please try it.
+我是学生。|Wǒ shì xuésheng.|I am a student.
+你是不是老师？|Nǐ shì bu shì lǎoshī?|Are you a teacher?
+我的手很冷。|Wǒ de shǒu hěn lěng.|My hands are cold.
+我的手机在哪儿？|Wǒ de shǒujī zài nǎr?|Where is my mobile phone?
+我喜欢看书。|Wǒ xǐhuan kàn shū.|I like reading books.
+我的书包很重。|Wǒ de shūbāo hěn zhòng.|My schoolbag is heavy.
+我去书店买书。|Wǒ qù shūdiàn mǎi shū.|I go to the bookstore to buy books.
+树很高。|Shù hěn gāo.|The tree is tall.
+我要喝水。|Wǒ yào hē shuǐ.|I want to drink water.
+我喜欢吃水果。|Wǒ xǐhuan chī shuǐguǒ.|I like eating fruit.
+我想睡觉。|Wǒ xiǎng shuìjiào.|I want to sleep.
+我晚上十点睡觉。|Wǒ wǎnshang shí diǎn shuìjiào.|I sleep at ten in the evening.
+请说汉语。|Qǐng shuō Hànyǔ.|Please speak Chinese.
+他在说话。|Tā zài shuōhuà.|He is talking.
+我有四本书。|Wǒ yǒu sì běn shū.|I have four books.
+我送你回家。|Wǒ sòng nǐ huíjiā.|I'll walk you home.
+我二十岁。|Wǒ èrshí suì.|I am twenty years old.
+他是我的朋友。|Tā shì wǒ de péngyou.|He is my friend.
+他们是学生。|Tāmen shì xuésheng.|They are students.
+她是老师。|Tā shì lǎoshī.|She is a teacher.
+她们是女生。|Tāmen shì nǚshēng.|They are girls.
+这个太贵了。|Zhège tài guì le.|This is too expensive.
+今天天气很好。|Jīntiān tiānqì hěn hǎo.|Today the weather is nice.
+今天天气怎么样？|Jīntiān tiānqì zěnmeyàng?|How is the weather today?
+我听音乐。|Wǒ tīng yīnyuè.|I listen to music.
+我听到一个声音。|Wǒ tīngdào yí ge shēngyīn.|I heard a sound.
+我没听见。|Wǒ méi tīngjiàn.|I didn't hear.
+我们做听写。|Wǒmen zuò tīngxiě.|We do dictation.
+他是我的同学。|Tā shì wǒ de tóngxué.|He is my classmate.
+我去图书馆看书。|Wǒ qù túshūguǎn kàn shū.|I go to the library to read.
+外边很冷。|Wàibian hěn lěng.|It is cold outside.
+请去外边等。|Qǐng qù wàibian děng.|Please wait outside.
+他去外国了。|Tā qù wàiguó le.|He went abroad.
+我在学外语。|Wǒ zài xué wàiyǔ.|I am learning a foreign language.
+我们去玩儿吧。|Wǒmen qù wánr ba.|Let's go have fun.
+现在很晚了。|Xiànzài hěn wǎn le.|It is very late now.
+我吃晚饭了。|Wǒ chī wǎnfàn le.|I ate dinner.
+晚上我看电视。|Wǎnshang wǒ kàn diànshì.|In the evening I watch TV.
+我在网上买东西。|Wǒ zài wǎngshàng mǎi dōngxi.|I buy things online.
+我有一个网友。|Wǒ yǒu yí ge wǎngyǒu.|I have an online friend.
+别忘了。|Bié wàng le.|Don't forget.
+我忘记了他的名字。|Wǒ wàngjìle tā de míngzi.|I forgot his name.
+我问老师。|Wǒ wèn lǎoshī.|I ask the teacher.
+我是学生。|Wǒ shì xuésheng.|I am a student.
+我们一起去。|Wǒmen yìqǐ qù.|We go together.
+我有五本书。|Wǒ yǒu wǔ běn shū.|I have five books.
+我吃午饭。|Wǒ chī wǔfàn.|I eat lunch.
+学校在西边。|Xuéxiào zài xībiān.|The school is in the west.
+西边有一个商店。|Xībiān yǒu yí ge shāngdiàn.|There is a shop on the west side.
+我洗手。|Wǒ xǐ shǒu.|I wash my hands.
+洗手间在哪儿？|Xǐshǒujiān zài nǎr?|Where is the restroom?
+我喜欢中国。|Wǒ xǐhuan Zhōngguó.|I like China.
+书在桌子下。|Shū zài zhuōzi xià.|The book is under the table.
+我五点下班。|Wǒ wǔ diǎn xiàbān.|I finish work at five.
+猫在桌子下边。|Māo zài zhuōzi xiàbian.|The cat is under the table.
+请下车。|Qǐng xiàchē.|Please get off.
+下次见。|Xià cì jiàn.|See you next time.
+我们下课了。|Wǒmen xiàkè le.|We finished class.
+下午我有课。|Xiàwǔ wǒ yǒu kè.|I have class in the afternoon.
+今天下雨了。|Jīntiān xiàyǔ le.|It rained today.
+你先走。|Nǐ xiān zǒu.|You go first.
+王先生是老师。|Wáng xiānsheng shì lǎoshī.|Mr. Wang is a teacher.
+现在几点？|Xiànzài jǐ diǎn?|What time is it now?
+我想回家。|Wǒ xiǎng huíjiā.|I want to go home.
+这个房间很小。|Zhège fángjiān hěn xiǎo.|This room is small.
+那个小孩儿很可爱。|Nàge xiǎoháir hěn kě'ài.|That child is cute.
+王小姐是医生。|Wáng xiǎojiě shì yīshēng.|Miss Wang is a doctor.
+小朋友们好！|Xiǎopéngyoumen hǎo!|Hello little friends!
+我学了两个小时。|Wǒ xuéle liǎng ge xiǎoshí.|I studied for two hours.
+他在小学上学。|Tā zài xiǎoxué shàngxué.|He goes to primary school.
+我弟弟是小学生。|Wǒ dìdi shì xiǎoxuéshēng.|My younger brother is a primary school student.
+她笑了。|Tā xiào le.|She smiled.
+我写汉字。|Wǒ xiě Hànzì.|I write Chinese characters.
+谢谢你！|Xièxie nǐ!|Thank you!
+这是我的新书。|Zhè shì wǒ de xīn shū.|This is my new book.
+新年快乐！|Xīnnián kuàilè!|Happy New Year!
+一个星期有七天。|Yí ge xīngqī yǒu qī tiān.|A week has seven days.
+星期日我休息。|Xīngqīrì wǒ xiūxi.|On Sunday I rest.
+星期天我去玩儿。|Xīngqītiān wǒ qù wánr.|On Sunday I go out to play.
+行，没问题。|Xíng, méi wèntí.|Okay, no problem.
+我需要休息。|Wǒ xūyào xiūxi.|I need to rest.
+我学汉语。|Wǒ xué Hànyǔ.|I study Chinese.
+我是学生。|Wǒ shì xuésheng.|I am a student.
+我学习很认真。|Wǒ xuéxí hěn rènzhēn.|I study very seriously.
+我去学校。|Wǒ qù xuéxiào.|I go to school.
+我在学院学习。|Wǒ zài xuéyuàn xuéxí.|I study at the college.
+我要喝水。|Wǒ yào hē shuǐ.|I want to drink water.
+我爷爷很老。|Wǒ yéye hěn lǎo.|My grandfather is very old.
+我也是学生。|Wǒ yě shì xuésheng.|I am also a student.
+请翻到第五页。|Qǐng fān dào dì wǔ yè.|Please turn to page five.
+我有一个苹果。|Wǒ yǒu yí ge píngguǒ.|I have one apple.
+我买衣服。|Wǒ mǎi yīfu.|I buy clothes.
+他是医生。|Tā shì yīshēng.|He is a doctor.
+我去医院。|Wǒ qù yīyuàn.|I go to the hospital.
+我吃了一半。|Wǒ chīle yíbàn.|I ate half.
+请等一会儿。|Qǐng děng yíhuìr.|Please wait a moment.
+我们一块儿去。|Wǒmen yíkuàir qù.|We go together.
+请等一下儿。|Qǐng děng yíxiàr.|Please wait a moment.
+我们的一样。|Wǒmen de yíyàng.|Ours are the same.
+我一边走一边听音乐。|Wǒ yìbiān zǒu yìbiān tīng yīnyuè.|I listen to music while walking.
+我会说一点儿汉语。|Wǒ huì shuō yìdiǎnr Hànyǔ.|I can speak a little Chinese.
+我们一起吃饭。|Wǒmen yìqǐ chīfàn.|We eat together.
+我有一些书。|Wǒ yǒu yìxiē shū.|I have some books.
+我用电脑。|Wǒ yòng diànnǎo.|I use a computer.
+我有钱。|Wǒ yǒu qián.|I have money.
+有的人喜欢喝茶。|Yǒude rén xǐhuan hē chá.|Some people like drinking tea.
+北京很有名。|Běijīng hěn yǒumíng.|Beijing is very famous.
+我有时候去图书馆。|Wǒ yǒushíhou qù túshūguǎn.|Sometimes I go to the library.
+我有些累。|Wǒ yǒuxiē lèi.|I am somewhat tired.
+这本书很有用。|Zhè běn shū hěn yǒuyòng.|This book is very useful.
+请往右走。|Qǐng wǎng yòu zǒu.|Please go right.
+商店在右边。|Shāngdiàn zài yòubian.|The shop is on the right.
+今天下雨。|Jīntiān xià yǔ.|It rains today.
+这个十元。|Zhège shí yuán.|This is ten yuan.
+学校很远。|Xuéxiào hěn yuǎn.|The school is far.
+一年有十二个月。|Yì nián yǒu shí'èr ge yuè.|A year has twelve months.
+请再说一遍。|Qǐng zài shuō yí biàn.|Please say it again.
+再见！|Zàijiàn!|Goodbye!
+我在家。|Wǒ zài jiā.|I am at home.
+他今天在家。|Tā jīntiān zài jiā.|He is at home today.
+早上好！|Zǎoshang hǎo!|Good morning!
+我吃早饭。|Wǒ chī zǎofàn.|I eat breakfast.
+早上我七点起床。|Zǎoshang wǒ qī diǎn qǐchuáng.|In the morning I get up at seven.
+你怎么去？|Nǐ zěnme qù?|How do you go?
+请站起来。|Qǐng zhàn qǐlái.|Please stand up.
+我找我的手机。|Wǒ zhǎo wǒ de shǒujī.|I am looking for my mobile phone.
+我找到了。|Wǒ zhǎodào le.|I found it.
+这是我的书。|Zhè shì wǒ de shū.|This is my book.
+请来这边。|Qǐng lái zhèbiān.|Please come here.
+这里很漂亮。|Zhèlǐ hěn piàoliang.|It is beautiful here.
+我在这儿。|Wǒ zài zhèr.|I am here.
+这些书是我的。|Zhèxiē shū shì wǒ de.|These books are mine.
+他坐着。|Tā zuòzhe.|He is sitting.
+真好看！|Zhēn hǎokàn!|Really beautiful!
+真的吗？|Zhēnde ma?|Really?
+我正在吃饭。|Wǒ zhèngzài chīfàn.|I am currently eating.
+他正在看书。|Tā zhèngzài kàn shū.|He is reading.
+我知道。|Wǒ zhīdào.|I know.
+知识很重要。|Zhīshi hěn zhòngyào.|Knowledge is important.
+我在中间。|Wǒ zài zhōngjiān.|I am in the middle.
+中国很大。|Zhōngguó hěn dà.|China is big.
+他在我们中间。|Tā zài wǒmen zhōngjiān.|He is between us.
+我学中文。|Wǒ xué Zhōngwén.|I study Chinese.
+中午我吃饭。|Zhōngwǔ wǒ chīfàn.|At noon I eat.
+他在中学上学。|Tā zài zhōngxué shàngxué.|He goes to middle school.
+我是中学生。|Wǒ shì zhōngxuéshēng.|I am a middle school student.
+这个很重。|Zhège hěn zhòng.|This is heavy.
+这个很重要。|Zhège hěn zhòngyào.|This is very important.
+我住在北京。|Wǒ zhù zài Běijīng.|I live in Beijing.
+我准备去中国。|Wǒ zhǔnbèi qù Zhōngguó.|I am preparing to go to China.
+书在桌子上。|Shū zài zhuōzi shàng.|The book is on the table.
+这个字很难。|Zhège zì hěn nán.|This character is difficult.
+我有三本本子。|Wǒ yǒu sān běn běnzi.|I have three notebooks.
+我走路去。|Wǒ zǒulù qù.|I go on foot.
+我喜欢走路。|Wǒ xǐhuan zǒulù.|I like walking.
+他最高。|Tā zuì gāo.|He is the tallest.
+你最好休息。|Nǐ zuìhǎo xiūxi.|You'd better rest.
+最后他来了。|Zuìhòu tā lái le.|Finally he came.
+昨天我去了学校。|Zuótiān wǒ qùle xuéxiào.|Yesterday I went to school.
+请往左走。|Qǐng wǎng zuǒ zǒu.|Please go left.
+银行在左边。|Yínháng zài zuǒbian.|The bank is on the left.
+请坐。|Qǐng zuò.|Please sit.
+请坐下。|Qǐng zuòxià.|Please sit down.
+我做饭。|Wǒ zuòfàn.|I cook.
